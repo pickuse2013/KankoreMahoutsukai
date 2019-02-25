@@ -56,10 +56,7 @@ namespace KankoreMahoutsukai
 
         private void end_Click(object sender, EventArgs e)
         {
-            if (Process.key == true)
-            {
-                Process.key = false;
-            }
+            Process.End();
         }
     }
 }

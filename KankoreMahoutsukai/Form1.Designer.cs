@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -182,8 +183,8 @@
             this.breakage.FormattingEnabled = true;
             this.breakage.Items.AddRange(new object[] {
             "随意出击",
-            "黄油弹禁止出击",
-            "红油弹禁止出击"});
+            "小破禁止出击",
+            "中破禁止出击"});
             this.breakage.Location = new System.Drawing.Point(180, 110);
             this.breakage.Name = "breakage";
             this.breakage.Size = new System.Drawing.Size(130, 20);
@@ -438,9 +439,12 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.status);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "艦これ魔法使い";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);

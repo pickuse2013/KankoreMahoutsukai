@@ -11,27 +11,27 @@ namespace KankoreMahoutsukai.process
     class Process
     {
         private static int step = 0;
-        public static bool key = false;
+        private static bool key = false;
 
         // 关卡
-        private static int seaArea = 1;
-        private static int point = 1;
+        public static int seaArea = 1;
+        public static int point = 1;
 
         // 舰队检查
-        private static int resourcesIndex = 0;
-        private static int resources = 0;
-        private static int fatigueIndex = 0;
-        private static int fatigue = 0;
-        private static int breakageIndex = 0;
-        private static int breakage = 0;
+        public static int resourcesIndex = 0;
+        public static int resources = 0;
+        public static int fatigueIndex = 0;
+        public static int fatigue = 0;
+        public static int breakageIndex = 0;
+        public static int breakage = 0;
 
         // 战斗配置
-        private static string formation = "单纵阵";
-        private static bool isNightFighting = false;
-        private static int aimAttackNum = 999;
+        public static string formation = "单纵阵";
+        public static bool isNightFighting = false;
+        public static int aimAttackNum = 999;
 
         // 出击次数
-        private static int attackCount = 0;
+        public static int attackCount = 0;
 
         // 是否需要补给
         public static bool supplyTeam1 = false;
@@ -57,22 +57,12 @@ namespace KankoreMahoutsukai.process
 
             try
             {
+                step = 0;
                 key = true;
-                while (key)
+                while (true)
                 {
-                    if (processControl())
-                    {
-                        step = step + 1;
-                        if (step > 0)
-                        {
-                            step = 0;
-                        }
-                    }
-                    else
-                    {
-                        Outputs.Log("结束流程：" + step);
-                        key = false;
-                    }
+                    processControl();
+                    step = step + 1;
                 }
             } catch (Exception e)
             {
@@ -82,6 +72,25 @@ namespace KankoreMahoutsukai.process
             return true;
         }
 
+        public static void End()
+        {
+            if (key)
+            {
+                key = false;
+                throw new Exception("停止运行脚本");
+            }
+        }
+
+        public static void End(string s)
+        {
+            Outputs.Log(s);
+            if (key)
+            {
+                key = false;
+                throw new Exception("停止运行脚本");
+            }
+        }
+
         private static bool processControl()
         {
             Utils.Delay(1000);
@@ -89,8 +98,13 @@ namespace KankoreMahoutsukai.process
             {
                 case 0 :
                     return ExpeditionReturn.Execution();
+                case 1:
+                    return Supply.Execution();
+                case 2:
+                    return Attack.Execution();
             }
-            return false;
+            ResetProcess();
+            return true;
         }
 
         // 流程归0
