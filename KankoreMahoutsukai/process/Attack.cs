@@ -120,8 +120,8 @@ namespace KankoreMahoutsukai.process
 
         private static void CheckTeam()
         {
-            int resourcesIndex = Process.resourcesIndex;
-            int resources = Process.resources;
+            int resourceIndex = Process.resourceIndex;
+            int resource = Process.resource;
             int fatigueIndex = Process.fatigueIndex;
             int fatigue = Process.fatigue;
             int breakageIndex = Process.breakageIndex;
@@ -146,7 +146,7 @@ namespace KankoreMahoutsukai.process
             int x1, y1, x2, y2;
 
             // 资源检查
-            if (resourcesIndex == 0)
+            if (resourceIndex == 0)
             {
                 x1 = 500;
                 y1 = 188;
@@ -156,13 +156,13 @@ namespace KankoreMahoutsukai.process
             else
             {
                 x1 = 500;
-                y1 = 188 + (resourcesIndex - 1) * 72;
+                y1 = 188 + (resourceIndex - 1) * 72;
                 x2 = 750;
-                y2 = 618 + (resourcesIndex - 1) * 72;
+                y2 = 618 + (resourceIndex - 1) * 72;
             }
-            if (resources > 0)
+            if (resource > 0)
             {
-                if (resources == 1)
+                if (resource == 1)
                 {
                     if (Operation.FindPic(x1, y1, x2, y2, "油_黄色警告", 0.7))
                     {
@@ -312,7 +312,6 @@ namespace KankoreMahoutsukai.process
                         }
                         else if (Operation.FindPic(250, 220, 850, 450, "逃跑或夜战", 0.8, out x, out y))
                         {
-                            w2 = false;
                             if (isNightFighting)
                             {
                                 Outputs.Log("进入夜战");

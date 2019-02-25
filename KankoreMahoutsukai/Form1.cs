@@ -23,10 +23,10 @@ namespace KankoreMahoutsukai
         private void Form1_Load(object sender, EventArgs e)
         {
             this.point.SelectedIndex = 0;
-            this.resourcesIndex.SelectedIndex = 0;
+            this.resourceIndex.SelectedIndex = 0;
             this.fatigueIndex.SelectedIndex = 0;
             this.breakageIndex.SelectedIndex = 0;
-            this.resources.SelectedIndex = 0;
+            this.resource.SelectedIndex = 0;
             this.fatigue.SelectedIndex = 0;
             this.breakage.SelectedIndex = 0;
             this.formation.SelectedIndex = 0;

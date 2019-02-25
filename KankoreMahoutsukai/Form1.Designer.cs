@@ -40,10 +40,10 @@
             this.formation = new System.Windows.Forms.ComboBox();
             this.breakage = new System.Windows.Forms.ComboBox();
             this.fatigue = new System.Windows.Forms.ComboBox();
-            this.resources = new System.Windows.Forms.ComboBox();
+            this.resource = new System.Windows.Forms.ComboBox();
             this.breakageIndex = new System.Windows.Forms.ComboBox();
             this.fatigueIndex = new System.Windows.Forms.ComboBox();
-            this.resourcesIndex = new System.Windows.Forms.ComboBox();
+            this.resourceIndex = new System.Windows.Forms.ComboBox();
             this.point = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -102,10 +102,10 @@
             this.tabPage1.Controls.Add(this.formation);
             this.tabPage1.Controls.Add(this.breakage);
             this.tabPage1.Controls.Add(this.fatigue);
-            this.tabPage1.Controls.Add(this.resources);
+            this.tabPage1.Controls.Add(this.resource);
             this.tabPage1.Controls.Add(this.breakageIndex);
             this.tabPage1.Controls.Add(this.fatigueIndex);
-            this.tabPage1.Controls.Add(this.resourcesIndex);
+            this.tabPage1.Controls.Add(this.resourceIndex);
             this.tabPage1.Controls.Add(this.point);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label8);
@@ -207,21 +207,21 @@
             this.fatigue.TabIndex = 14;
             this.fatigue.ValueMember = "0";
             // 
-            // resources
+            // resource
             // 
-            this.resources.DisplayMember = "0";
-            this.resources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resources.DropDownWidth = 110;
-            this.resources.FormattingEnabled = true;
-            this.resources.Items.AddRange(new object[] {
+            this.resource.DisplayMember = "0";
+            this.resource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resource.DropDownWidth = 110;
+            this.resource.FormattingEnabled = true;
+            this.resource.Items.AddRange(new object[] {
             "随意出击",
             "黄油弹禁止出击",
             "红油弹禁止出击"});
-            this.resources.Location = new System.Drawing.Point(180, 50);
-            this.resources.Name = "resources";
-            this.resources.Size = new System.Drawing.Size(130, 20);
-            this.resources.TabIndex = 13;
-            this.resources.ValueMember = "0";
+            this.resource.Location = new System.Drawing.Point(180, 50);
+            this.resource.Name = "resource";
+            this.resource.Size = new System.Drawing.Size(130, 20);
+            this.resource.TabIndex = 13;
+            this.resource.ValueMember = "0";
             // 
             // breakageIndex
             // 
@@ -257,12 +257,12 @@
             this.fatigueIndex.Size = new System.Drawing.Size(80, 20);
             this.fatigueIndex.TabIndex = 11;
             // 
-            // resourcesIndex
+            // resourceIndex
             // 
-            this.resourcesIndex.DisplayMember = "0";
-            this.resourcesIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.resourcesIndex.FormattingEnabled = true;
-            this.resourcesIndex.Items.AddRange(new object[] {
+            this.resourceIndex.DisplayMember = "0";
+            this.resourceIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resourceIndex.FormattingEnabled = true;
+            this.resourceIndex.Items.AddRange(new object[] {
             "所有人",
             "1",
             "2",
@@ -270,11 +270,11 @@
             "4",
             "5",
             "6"});
-            this.resourcesIndex.Location = new System.Drawing.Point(80, 50);
-            this.resourcesIndex.Name = "resourcesIndex";
-            this.resourcesIndex.Size = new System.Drawing.Size(80, 20);
-            this.resourcesIndex.TabIndex = 10;
-            this.resourcesIndex.ValueMember = "0";
+            this.resourceIndex.Location = new System.Drawing.Point(80, 50);
+            this.resourceIndex.Name = "resourceIndex";
+            this.resourceIndex.Size = new System.Drawing.Size(80, 20);
+            this.resourceIndex.TabIndex = 10;
+            this.resourceIndex.ValueMember = "0";
             // 
             // point
             // 
@@ -476,10 +476,10 @@
         public System.Windows.Forms.ComboBox point;
         public System.Windows.Forms.ComboBox breakageIndex;
         public System.Windows.Forms.ComboBox fatigueIndex;
-        public System.Windows.Forms.ComboBox resourcesIndex;
+        public System.Windows.Forms.ComboBox resourceIndex;
         public System.Windows.Forms.ComboBox breakage;
         public System.Windows.Forms.ComboBox fatigue;
-        public System.Windows.Forms.ComboBox resources;
+        public System.Windows.Forms.ComboBox resource;
         public System.Windows.Forms.ComboBox isNightFighting;
         public System.Windows.Forms.ComboBox formation;
         public System.Windows.Forms.TextBox aimAttackNum;

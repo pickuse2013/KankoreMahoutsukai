@@ -18,8 +18,8 @@ namespace KankoreMahoutsukai.process
         public static int point = 1;
 
         // 舰队检查
-        public static int resourcesIndex = 0;
-        public static int resources = 0;
+        public static int resourceIndex = 0;
+        public static int resource = 0;
         public static int fatigueIndex = 0;
         public static int fatigue = 0;
         public static int breakageIndex = 0;
@@ -122,13 +122,13 @@ namespace KankoreMahoutsukai.process
 
 
             // 舰队检查
-            resourcesIndex = Form1.form1.resourcesIndex.SelectedIndex;
-            resources = Form1.form1.resources.SelectedIndex;
+            resourceIndex = Form1.form1.resourceIndex.SelectedIndex;
+            resource = Form1.form1.resource.SelectedIndex;
             fatigueIndex = Form1.form1.fatigueIndex.SelectedIndex;
             fatigue = Form1.form1.fatigue.SelectedIndex;
             breakageIndex = Form1.form1.breakageIndex.SelectedIndex;
             breakage = Form1.form1.breakage.SelectedIndex;
-            config += Form1.form1.resourcesIndex.Text + " " + Form1.form1.resources.Text + System.Environment.NewLine;
+            config += Form1.form1.resourceIndex.Text + " " + Form1.form1.resource.Text + System.Environment.NewLine;
             config += Form1.form1.fatigueIndex.Text + " " + Form1.form1.fatigue.Text + System.Environment.NewLine;
             config += Form1.form1.breakageIndex.Text + " " + Form1.form1.breakage.Text + System.Environment.NewLine;
 
