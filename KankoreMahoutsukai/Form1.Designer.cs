@@ -1,0 +1,487 @@
+﻿namespace KankoreMahoutsukai
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// 必需的设计器变量。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows 窗体设计器生成的代码
+
+        /// <summary>
+        /// 设计器支持所需的方法 - 不要修改
+        /// 使用代码编辑器修改此方法的内容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.attackCount = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.aimAttackNum = new System.Windows.Forms.TextBox();
+            this.isNightFighting = new System.Windows.Forms.ComboBox();
+            this.formation = new System.Windows.Forms.ComboBox();
+            this.breakage = new System.Windows.Forms.ComboBox();
+            this.fatigue = new System.Windows.Forms.ComboBox();
+            this.resources = new System.Windows.Forms.ComboBox();
+            this.breakageIndex = new System.Windows.Forms.ComboBox();
+            this.fatigueIndex = new System.Windows.Forms.ComboBox();
+            this.resourcesIndex = new System.Windows.Forms.ComboBox();
+            this.point = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.log = new System.Windows.Forms.TextBox();
+            this.start = new System.Windows.Forms.Button();
+            this.end = new System.Windows.Forms.Button();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(20, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "运行状态";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // status
+            // 
+            this.status.BackColor = System.Drawing.Color.Black;
+            this.status.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.status.Location = new System.Drawing.Point(120, 30);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(270, 20);
+            this.status.TabIndex = 1;
+            this.status.Text = "运行状态";
+            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(20, 80);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(375, 274);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.attackCount);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.aimAttackNum);
+            this.tabPage1.Controls.Add(this.isNightFighting);
+            this.tabPage1.Controls.Add(this.formation);
+            this.tabPage1.Controls.Add(this.breakage);
+            this.tabPage1.Controls.Add(this.fatigue);
+            this.tabPage1.Controls.Add(this.resources);
+            this.tabPage1.Controls.Add(this.breakageIndex);
+            this.tabPage1.Controls.Add(this.fatigueIndex);
+            this.tabPage1.Controls.Add(this.resourcesIndex);
+            this.tabPage1.Controls.Add(this.point);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(367, 248);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "战斗";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // attackCount
+            // 
+            this.attackCount.Location = new System.Drawing.Point(70, 220);
+            this.attackCount.Name = "attackCount";
+            this.attackCount.Size = new System.Drawing.Size(80, 21);
+            this.attackCount.TabIndex = 20;
+            this.attackCount.Text = "0";
+            this.attackCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(10, 220);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 20);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "出击次数";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // aimAttackNum
+            // 
+            this.aimAttackNum.Location = new System.Drawing.Point(70, 180);
+            this.aimAttackNum.Name = "aimAttackNum";
+            this.aimAttackNum.Size = new System.Drawing.Size(80, 21);
+            this.aimAttackNum.TabIndex = 18;
+            this.aimAttackNum.Text = "999";
+            this.aimAttackNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aimAttackNum_KeyPress);
+            // 
+            // isNightFighting
+            // 
+            this.isNightFighting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.isNightFighting.FormattingEnabled = true;
+            this.isNightFighting.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.isNightFighting.Location = new System.Drawing.Point(230, 150);
+            this.isNightFighting.Name = "isNightFighting";
+            this.isNightFighting.Size = new System.Drawing.Size(80, 20);
+            this.isNightFighting.TabIndex = 17;
+            // 
+            // formation
+            // 
+            this.formation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formation.FormattingEnabled = true;
+            this.formation.Items.AddRange(new object[] {
+            "单纵阵",
+            "复纵阵",
+            "警戒阵",
+            "梯形阵",
+            "单横阵"});
+            this.formation.Location = new System.Drawing.Point(70, 150);
+            this.formation.Name = "formation";
+            this.formation.Size = new System.Drawing.Size(80, 20);
+            this.formation.TabIndex = 16;
+            // 
+            // breakage
+            // 
+            this.breakage.DisplayMember = "0";
+            this.breakage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.breakage.FormattingEnabled = true;
+            this.breakage.Items.AddRange(new object[] {
+            "随意出击",
+            "黄油弹禁止出击",
+            "红油弹禁止出击"});
+            this.breakage.Location = new System.Drawing.Point(180, 110);
+            this.breakage.Name = "breakage";
+            this.breakage.Size = new System.Drawing.Size(130, 20);
+            this.breakage.TabIndex = 15;
+            this.breakage.ValueMember = "0";
+            // 
+            // fatigue
+            // 
+            this.fatigue.DisplayMember = "0";
+            this.fatigue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fatigue.DropDownWidth = 110;
+            this.fatigue.FormattingEnabled = true;
+            this.fatigue.Items.AddRange(new object[] {
+            "随意出击",
+            "黄脸禁止出击",
+            "红脸禁止出击"});
+            this.fatigue.Location = new System.Drawing.Point(180, 80);
+            this.fatigue.Name = "fatigue";
+            this.fatigue.Size = new System.Drawing.Size(130, 20);
+            this.fatigue.TabIndex = 14;
+            this.fatigue.ValueMember = "0";
+            // 
+            // resources
+            // 
+            this.resources.DisplayMember = "0";
+            this.resources.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resources.DropDownWidth = 110;
+            this.resources.FormattingEnabled = true;
+            this.resources.Items.AddRange(new object[] {
+            "随意出击",
+            "黄油弹禁止出击",
+            "红油弹禁止出击"});
+            this.resources.Location = new System.Drawing.Point(180, 50);
+            this.resources.Name = "resources";
+            this.resources.Size = new System.Drawing.Size(130, 20);
+            this.resources.TabIndex = 13;
+            this.resources.ValueMember = "0";
+            // 
+            // breakageIndex
+            // 
+            this.breakageIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.breakageIndex.FormattingEnabled = true;
+            this.breakageIndex.Items.AddRange(new object[] {
+            "所有人",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.breakageIndex.Location = new System.Drawing.Point(80, 110);
+            this.breakageIndex.Name = "breakageIndex";
+            this.breakageIndex.Size = new System.Drawing.Size(80, 20);
+            this.breakageIndex.TabIndex = 12;
+            // 
+            // fatigueIndex
+            // 
+            this.fatigueIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fatigueIndex.FormattingEnabled = true;
+            this.fatigueIndex.Items.AddRange(new object[] {
+            "所有人",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.fatigueIndex.Location = new System.Drawing.Point(80, 80);
+            this.fatigueIndex.Name = "fatigueIndex";
+            this.fatigueIndex.Size = new System.Drawing.Size(80, 20);
+            this.fatigueIndex.TabIndex = 11;
+            // 
+            // resourcesIndex
+            // 
+            this.resourcesIndex.DisplayMember = "0";
+            this.resourcesIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resourcesIndex.FormattingEnabled = true;
+            this.resourcesIndex.Items.AddRange(new object[] {
+            "所有人",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.resourcesIndex.Location = new System.Drawing.Point(80, 50);
+            this.resourcesIndex.Name = "resourcesIndex";
+            this.resourcesIndex.Size = new System.Drawing.Size(80, 20);
+            this.resourcesIndex.TabIndex = 10;
+            this.resourcesIndex.ValueMember = "0";
+            // 
+            // point
+            // 
+            this.point.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.point.FormattingEnabled = true;
+            this.point.Items.AddRange(new object[] {
+            "1-1",
+            "1-2",
+            "1-3",
+            "1-4",
+            "1-5",
+            "1-6",
+            "2-1",
+            "2-2",
+            "2-3",
+            "2-4",
+            "2-5",
+            "2-6",
+            "3-1",
+            "3-2",
+            "3-3",
+            "3-4",
+            "3-5",
+            "3-6"});
+            this.point.Location = new System.Drawing.Point(80, 10);
+            this.point.Name = "point";
+            this.point.Size = new System.Drawing.Size(100, 20);
+            this.point.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(10, 182);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "战斗次数";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(170, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 20);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "夜战";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(10, 150);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 20);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "阵型";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(10, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 20);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "破损检查";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(10, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 20);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "疲劳检查";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(10, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 20);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "油弹检查";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(10, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "选择关卡";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(367, 248);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "远征";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(367, 248);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "修理";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(430, 30);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "战斗日志";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // log
+            // 
+            this.log.Location = new System.Drawing.Point(430, 70);
+            this.log.Multiline = true;
+            this.log.Name = "log";
+            this.log.ReadOnly = true;
+            this.log.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.log.Size = new System.Drawing.Size(200, 280);
+            this.log.TabIndex = 4;
+            this.log.WordWrap = false;
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(20, 366);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(84, 23);
+            this.start.TabIndex = 5;
+            this.start.Text = "开始";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
+            // end
+            // 
+            this.end.Location = new System.Drawing.Point(122, 366);
+            this.end.Name = "end";
+            this.end.Size = new System.Drawing.Size(84, 23);
+            this.end.TabIndex = 6;
+            this.end.Text = "停止";
+            this.end.UseVisualStyleBackColor = true;
+            this.end.Click += new System.EventHandler(this.end_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(654, 401);
+            this.Controls.Add(this.end);
+            this.Controls.Add(this.start);
+            this.Controls.Add(this.log);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox log;
+        public System.Windows.Forms.Label status;
+        public System.Windows.Forms.ComboBox point;
+        public System.Windows.Forms.ComboBox breakageIndex;
+        public System.Windows.Forms.ComboBox fatigueIndex;
+        public System.Windows.Forms.ComboBox resourcesIndex;
+        public System.Windows.Forms.ComboBox breakage;
+        public System.Windows.Forms.ComboBox fatigue;
+        public System.Windows.Forms.ComboBox resources;
+        public System.Windows.Forms.ComboBox isNightFighting;
+        public System.Windows.Forms.ComboBox formation;
+        public System.Windows.Forms.TextBox aimAttackNum;
+        public System.Windows.Forms.TextBox attackCount;
+        public System.Windows.Forms.Button start;
+        public System.Windows.Forms.Button end;
+    }
+}
+

@@ -1,1 +1,3 @@
-# KankoreMahoutsukai
+# 艦これ魔法使い
+
+*用C#重写的舰娘脚本*

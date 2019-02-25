@@ -1,0 +1,12 @@
+E:\Work\C#\Kantai\Kantai\bin\Debug\Kantai.exe.config
+E:\Work\C#\Kantai\Kantai\bin\Debug\Kantai.exe
+E:\Work\C#\Kantai\Kantai\bin\Debug\Kantai.pdb
+E:\Work\C#\Kantai\Kantai\obj\Debug\Interop.Dm.dll
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.csproj.ResolveComReference.cache
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.Form1.resources
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.Properties.Resources.resources
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.csproj.GenerateResource.cache
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.csproj.CoreCompileInputs.cache
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.exe
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.pdb
+E:\Work\C#\Kantai\Kantai\obj\Debug\Kantai.csprojAssemblyReference.cache

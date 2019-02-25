@@ -1,0 +1,12 @@
+E:\Work\C#\KankoreMahoutsukai\Kantai\bin\Debug\KankoreMahoutsukai.exe.config
+E:\Work\C#\KankoreMahoutsukai\Kantai\bin\Debug\KankoreMahoutsukai.exe
+E:\Work\C#\KankoreMahoutsukai\Kantai\bin\Debug\KankoreMahoutsukai.pdb
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.csprojAssemblyReference.cache
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\Interop.Dm.dll
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.csproj.ResolveComReference.cache
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.Form1.resources
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.Properties.Resources.resources
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.csproj.GenerateResource.cache
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.csproj.CoreCompileInputs.cache
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.exe
+E:\Work\C#\KankoreMahoutsukai\Kantai\obj\Debug\KankoreMahoutsukai.pdb
