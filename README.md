@@ -10,7 +10,6 @@
 - **KankoreMahoutsukai/bin/Debug/bmp/debug**为调试时使用的文件夹，每次查图都会保存搜寻的图
 - **KankoreMahoutsukaiSetup**里为安装程序项目
 
-
 ## 源码使用方法
 
 - 运行**assets/damo 3.1233/注册大漠插件到系统.bat**
