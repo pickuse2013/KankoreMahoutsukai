@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KankoreMahoutsukai", "KankoreMahoutsukai\KankoreMahoutsukai.csproj", "{9D12E72E-406B-478E-A42F-44F368EA069E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KankoreMahoutsukaiSetup", "KankoreMahoutsukaiSetup\KankoreMahoutsukaiSetup.vdproj", "{2DF7DFD5-C6A9-4D73-9437-A15D6D332F3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +17,13 @@ Global
 		{9D12E72E-406B-478E-A42F-44F368EA069E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D12E72E-406B-478E-A42F-44F368EA069E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D12E72E-406B-478E-A42F-44F368EA069E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DF7DFD5-C6A9-4D73-9437-A15D6D332F3E}.Debug|Any CPU.ActiveCfg = Debug
+		{2DF7DFD5-C6A9-4D73-9437-A15D6D332F3E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {830D0246-E471-4351-8C85-928E984629F0}
+		SolutionGuid = {29F62E92-A673-4548-BC09-EEF268CACB82}
 	EndGlobalSection
 EndGlobal

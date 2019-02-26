@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KankoreMahoutsukai.process;
+using KankoreMahoutsukai.utils;
 
 namespace KankoreMahoutsukai
 {
@@ -56,7 +57,8 @@ namespace KankoreMahoutsukai
 
         private void end_Click(object sender, EventArgs e)
         {
-            Process.End();
+            // Process.End(); 调试正常，打包后会无法捕捉异常
+            Operation.End = true; // 曲线救国
         }
     }
 }

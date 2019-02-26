@@ -19,11 +19,19 @@ namespace KankoreMahoutsukai.utils
         private static readonly int gameW = 1153;
         private static readonly int gameH = 692;
         private static int debug = 0;
+        private static bool isDebug = false;
+        public static bool End = false; // 手动结束脚本
 
         private static dmsoft dm = null;
 
         private static dmsoft GetDm()
         {
+            if (End)
+            {
+                KankoreMahoutsukai.process.Process.End();
+                End = false;
+            }
+
             if (dm == null)
             {
                 dm = new dmsoft();
@@ -83,17 +91,16 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim, out int x, out int y)
         {
-            string debugBmp;
-            debugBmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\debug\\debug" + debug.ToString() + bmp + ".bmp";
+            dmsoft dm = GetDm();
+            DebugBmp(x1, y1, x2, y2, bmp);
             bmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\" + bmp + ".bmp";
             if (!System.IO.File.Exists(bmp))
             {
-                Outputs.Msg("资源图片缺失，请检查bmp文件夹");
+                Outputs.Msg(bmp + "资源图片缺失，请检查bmp文件夹");
                 x = -1;
                 y = -1;
                 return false;
             }
-            dmsoft dm = GetDm();
             x2 = x2 == -1 ? gameW : x2;
             y2 = y2 == -1 ? gameH : y2;
             x1 = x1 + gameX1;
@@ -103,8 +110,6 @@ namespace KankoreMahoutsukai.utils
             object dx;
             object dy;
             int res = dm.FindPic(x1, y1, x2, y2, bmp, "000000", sim, 0, out dx, out dy);
-            //dm.Capture(x1, y1, x2, y2, debugBmp);
-            debug++;
             x = Convert.ToInt32(dx);
             y = Convert.ToInt32(dy);
             x -= gameX1;
@@ -122,9 +127,9 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim)
         {
+            dmsoft dm = GetDm();
             int x, y;
-            string debugBmp;
-            debugBmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\debug\\debug" + debug.ToString() + bmp + ".bmp";
+            DebugBmp(x1, y1, x2, y2, bmp);
             bmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\" + bmp + ".bmp";
             if (!System.IO.File.Exists(bmp))
             {
@@ -133,7 +138,6 @@ namespace KankoreMahoutsukai.utils
                 y = -1;
                 return false;
             }
-            dmsoft dm = GetDm();
             x2 = x2 == -1 ? gameW : x2;
             y2 = y2 == -1 ? gameH : y2;
             x1 = x1 + gameX1;
@@ -143,8 +147,6 @@ namespace KankoreMahoutsukai.utils
             object dx;
             object dy;
             int res = dm.FindPic(x1, y1, x2, y2, bmp, "000000", sim, 0, out dx, out dy);
-            //dm.Capture(x1, y1, x2, y2, debugBmp);
-            debug++;
             x = Convert.ToInt32(dx);
             y = Convert.ToInt32(dy);
             if (res != 0)
@@ -158,10 +160,22 @@ namespace KankoreMahoutsukai.utils
             return true;
         }
 
+        private static void DebugBmp(int x1, int y1, int x2, int y2, string bmp)
+        {
+            if (isDebug)
+            {
+                string debugBmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\debug\\debug" + debug.ToString() + bmp + ".bmp";
+                dmsoft dm = GetDm();
+                dm.Capture(x1, y1, x2, y2, debugBmp);
+                debug++;
+
+            }
+        }
+
         public static void Click(int x, int dx, int y, int dy, int delay)
         {
-            Random random = new Random();
             dmsoft dm = GetDm();
+            Random random = new Random();
             int r = random.Next(1, 11);
             if (r == 10)
             {
@@ -178,7 +192,7 @@ namespace KankoreMahoutsukai.utils
             dm.MoveTo(x, y);
             Utils.Delay(100);
             dm.LeftClick();
-            Outputs.Log("x" + x.ToString() + " y" + y.ToString());
+            // Outputs.Log("x" + x.ToString() + " y" + y.ToString());
         }
     }
 }

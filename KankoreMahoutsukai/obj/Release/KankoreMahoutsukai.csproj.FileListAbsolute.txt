@@ -1,0 +1,10 @@
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\bin\Release\KankoreMahoutsukai.exe.config
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\bin\Release\KankoreMahoutsukai.exe
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\bin\Release\KankoreMahoutsukai.pdb
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\Interop.Dm.dll
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.csproj.ResolveComReference.cache
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.Form1.resources
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.csproj.GenerateResource.cache
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.csproj.CoreCompileInputs.cache
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.exe
+E:\Work\C#\KankoreMahoutsukai\KankoreMahoutsukai\obj\Release\KankoreMahoutsukai.pdb
