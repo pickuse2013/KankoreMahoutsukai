@@ -138,7 +138,7 @@ namespace KankoreMahoutsukai.process
             }
 
             // 大破检查
-            if (Operation.FindPic(500, 188, 750, 618, "大破", 0.7) || Operation.FindPic(500, 188, 750, 618, "黄脸大破", 0.7) || Operation.FindPic(500, 188, 750, 618, "红脸大破", 0.7))
+            if (Operation.FindPic(500, 188, 750, 618, "大破", 0.5) || Operation.FindPic(500, 188, 750, 618, "黄脸大破", 0.5) || Operation.FindPic(500, 188, 750, 618, "红脸大破", 0.5))
             {
                 Process.End("舰娘大破，无法出击");
             }
@@ -224,12 +224,12 @@ namespace KankoreMahoutsukai.process
             {
                 if (breakage == 1)
                 {
-                    if (Operation.FindPic(x1, y1, x2, y2, "小破", 0.7))
+                    if (Operation.FindPic(x1, y1, x2, y2, "小破", 0.5))
                     {
                         Process.End("舰娘未修复！");
                     }
                 }
-                if (Operation.FindPic(x1, y1, x2, y2, "中破", 0.7))
+                if (Operation.FindPic(x1, y1, x2, y2, "中破", 0.5))
                 {
                     Process.End("舰娘未修复！");
                 }

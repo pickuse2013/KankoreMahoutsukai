@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using KankoreMahoutsukai.utils;
 
@@ -12,6 +13,8 @@ namespace KankoreMahoutsukai.process
     {
         private static int step = 0;
         private static bool key = false;
+        private static Thread thread;
+
 
         // 关卡
         public static int seaArea = 1;
@@ -44,51 +47,62 @@ namespace KankoreMahoutsukai.process
         public static bool expeditionTeam3 = false;
         public static bool expeditionTeam4 = false;
 
-        public static bool Start ()
+        public static void Start ()
         {
-            if (!Operation.BindWindow())
+            if (key)
             {
-                return false;
+                Outputs.Msg("脚本已在运行");
+                return;
             }
-            if (!Config())
-            {
-                return false;
-            }
-
-            try
-            {
-                step = 0;
-                key = true;
-                while (true)
-                {
-                    processControl();
-                    step = step + 1;
-                }
-            } catch (Exception e)
-            {
-
-            }
-            Outputs.Log("脚本已停止");
-            return true;
+            Form1.form1.start.Enabled = false;
+            Form1.form1.end.Enabled = true;
+            Form1.form1.attackCount.ReadOnly = true;
+            thread = new Thread(new ThreadStart(StartProcess));
+            thread.Start();
         }
 
         public static void End()
         {
-            if (key)
+            if (!key)
             {
-                key = false;
-                throw new Exception("停止运行脚本");
+                Outputs.Msg("脚本未启动");
+                return;
             }
+            key = false;
+            Outputs.Log("脚本已停止");
+            Form1.form1.start.Enabled = true;
+            Form1.form1.end.Enabled = false;
+            Form1.form1.attackCount.ReadOnly = false;
+            thread.Abort();
         }
 
         public static void End(string s)
         {
             Outputs.Log(s);
-            if (key)
+            End();
+        }
+
+        private static void StartProcess()
+        {
+            Outputs.Log("[" + DateTime.Now.ToString() + "]");
+            if (!Operation.BindWindow())
             {
-                key = false;
-                throw new Exception("停止运行脚本");
+                return;
             }
+            if (!Config())
+            {
+                return;
+            }
+
+
+            step = 0;
+            key = true;
+            while (true)
+            {
+                processControl();
+                step = step + 1;
+            }
+
         }
 
         private static bool processControl()
@@ -160,7 +174,7 @@ namespace KankoreMahoutsukai.process
             attackCount = Convert.ToInt32(Form1.form1.attackCount.Text);
             config += "出击次数 " + Form1.form1.attackCount.Text + System.Environment.NewLine;
 
-            config += "==========" + System.Environment.NewLine;
+            config += "==========";
             Outputs.Log(config);
             return true;
         }

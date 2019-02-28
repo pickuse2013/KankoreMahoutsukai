@@ -18,6 +18,7 @@ namespace KankoreMahoutsukai
         public Form1()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             form1 = this;
         }
 
@@ -58,7 +59,9 @@ namespace KankoreMahoutsukai
         private void end_Click(object sender, EventArgs e)
         {
             // Process.End(); 调试正常，打包后会无法捕捉异常
-            Operation.End = true; // 曲线救国
+
+            Process.End();
+
         }
     }
 }

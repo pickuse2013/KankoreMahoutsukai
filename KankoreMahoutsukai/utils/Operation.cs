@@ -19,19 +19,12 @@ namespace KankoreMahoutsukai.utils
         private static readonly int gameW = 1153;
         private static readonly int gameH = 692;
         private static int debug = 0;
-        private static bool isDebug = false;
-        public static bool End = false; // 手动结束脚本
+        private static bool isDebug = true;
 
         private static dmsoft dm = null;
 
         private static dmsoft GetDm()
         {
-            if (End)
-            {
-                KankoreMahoutsukai.process.Process.End();
-                End = false;
-            }
-
             if (dm == null)
             {
                 dm = new dmsoft();
@@ -101,8 +94,6 @@ namespace KankoreMahoutsukai.utils
                 y = -1;
                 return false;
             }
-            x2 = x2 == -1 ? gameW : x2;
-            y2 = y2 == -1 ? gameH : y2;
             x1 = x1 + gameX1;
             y1 = y1 + gameY1;
             x2 = x2 + gameX1;
@@ -127,45 +118,21 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim)
         {
-            dmsoft dm = GetDm();
+
             int x, y;
-            DebugBmp(x1, y1, x2, y2, bmp);
-            bmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\" + bmp + ".bmp";
-            if (!System.IO.File.Exists(bmp))
-            {
-                Outputs.Msg("资源图片缺失，请检查bmp文件夹");
-                x = -1;
-                y = -1;
-                return false;
-            }
-            x2 = x2 == -1 ? gameW : x2;
-            y2 = y2 == -1 ? gameH : y2;
-            x1 = x1 + gameX1;
-            y1 = y1 + gameY1;
-            x2 = x2 + gameX1;
-            y2 = y2 + gameY1;
-            object dx;
-            object dy;
-            int res = dm.FindPic(x1, y1, x2, y2, bmp, "000000", sim, 0, out dx, out dy);
-            x = Convert.ToInt32(dx);
-            y = Convert.ToInt32(dy);
-            if (res != 0)
-            {
-                return false;
-            }
-            if (x < 0 && y < 0)
-            {
-                return false;
-            }
-            return true;
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
         }
 
         private static void DebugBmp(int x1, int y1, int x2, int y2, string bmp)
         {
             if (isDebug)
             {
-                string debugBmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\debug\\debug" + debug.ToString() + bmp + ".bmp";
+                string debugBmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\debug\\" + debug.ToString() + bmp + ".bmp";
                 dmsoft dm = GetDm();
+                x1 = x1 + gameX1;
+                y1 = y1 + gameY1;
+                x2 = x2 + gameX1;
+                y2 = y2 + gameY1;
                 dm.Capture(x1, y1, x2, y2, debugBmp);
                 debug++;
 

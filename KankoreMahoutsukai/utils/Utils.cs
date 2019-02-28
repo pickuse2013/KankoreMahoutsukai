@@ -14,7 +14,7 @@ namespace KankoreMahoutsukai.utils
             int start = Environment.TickCount;
             while (Math.Abs(Environment.TickCount - start) < milliSecond)//毫秒
             {
-                Application.DoEvents();//可执行某无聊的操作
+                Application.DoEvents();
             }
         }
     }

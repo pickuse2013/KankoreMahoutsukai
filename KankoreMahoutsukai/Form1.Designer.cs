@@ -418,6 +418,7 @@
             // 
             // end
             // 
+            this.end.Enabled = false;
             this.end.Location = new System.Drawing.Point(122, 366);
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(84, 23);
