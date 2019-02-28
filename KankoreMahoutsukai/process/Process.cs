@@ -84,19 +84,25 @@ namespace KankoreMahoutsukai.process
 
         private static void StartProcess()
         {
+            key = true;
             Outputs.Log("[" + DateTime.Now.ToString() + "]");
             if (!Operation.BindWindow())
             {
+                End();
+                return;
+            }
+            if (!Operation.GamePosition())
+            {
+                End();
                 return;
             }
             if (!Config())
             {
+                End();
                 return;
             }
-
-
             step = 0;
-            key = true;
+            
             while (true)
             {
                 processControl();
@@ -110,7 +116,7 @@ namespace KankoreMahoutsukai.process
             Utils.Delay(1000);
             switch (step)
             {
-                case 0 :
+                case 0:
                     return ExpeditionReturn.Execution();
                 case 1:
                     return Supply.Execution();

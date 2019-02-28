@@ -12,17 +12,17 @@ namespace KankoreMahoutsukai.utils
 {
     class Operation
     {
-        private static readonly int gameX1 = 0;
-        private static readonly int gameY1 = 172;
-        //private static readonly int gameX2 = 1152;
-        //private static readonly int gameY2 = 864;
-        private static readonly int gameW = 1153;
-        private static readonly int gameH = 692;
+        private static  int gameX1 = 0;
+        private static  int gameY1 = 0;
+        private static readonly int gameW = 1200;
+        private static readonly int gameH = 720;
+        private static int windowW = 0;
+        private static int windowH = 0;
         private static int debug = 0;
-        private static bool isDebug = true;
+        private static bool isDebug = false;
 
         private static dmsoft dm = null;
-
+        private static int hwnd = 0;
         private static dmsoft GetDm()
         {
             if (dm == null)
@@ -64,7 +64,6 @@ namespace KankoreMahoutsukai.utils
         public static bool BindWindow()
         {
             dmsoft dm = GetDm();
-            int hwnd = 0;
             hwnd = dm.FindWindow("", "poi");
             if (hwnd == 0)
             {
@@ -82,9 +81,45 @@ namespace KankoreMahoutsukai.utils
             return true;
         }
 
+        public static bool GamePosition()
+        {
+            object w, h;
+            int width, height, x, y;
+            dmsoft dm = GetDm();
+            dm.GetClientSize(hwnd, out w, out h);
+            width = Convert.ToInt32(w);
+            height = Convert.ToInt32(h);
+            windowW = width;
+            windowH = height;
+            Outputs.Log("定位游戏窗口中，请勿更改poi浏览器大小");
+            gameX1 = 0;
+            gameY1 = 0;
+            if (!FindPic(0, 0, width, height, "position", 0.9, out x, out y))
+            {
+                Outputs.Log("未找到游戏窗口");
+                return false;
+            }
+            gameX1 = x - 1;
+            gameY1 = y + 1;
+            DebugBmp(0, 0, gameW - 1, gameH - 1, "t");
+            Outputs.Log("游戏窗口已更新：" + "x" + gameX1.ToString() + "y" + gameY1.ToString());
+            return true;
+        }
+
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim, out int x, out int y)
         {
             dmsoft dm = GetDm();
+            object w, h;
+            int width, height;
+            dm.GetClientSize(hwnd, out w, out h);
+            width = Convert.ToInt32(w);
+            height = Convert.ToInt32(h);
+            if (width != windowW || height != windowH)
+            {
+                Outputs.Log("poi浏览器大小改变，即将重新定位游戏窗口");
+                Utils.Delay(2000);
+                GamePosition();
+            }
             DebugBmp(x1, y1, x2, y2, bmp);
             bmp = System.AppDomain.CurrentDomain.BaseDirectory + "bmp\\" + bmp + ".bmp";
             if (!System.IO.File.Exists(bmp))
@@ -120,6 +155,57 @@ namespace KankoreMahoutsukai.utils
         {
 
             int x, y;
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string bmp, double sim, out int x, out int y)
+        {
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string bmp, double sim)
+        {
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1; 
+            int x, y;
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string bmp, out int x, out int y)
+        {
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            double sim = 0.8;
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string[] bmps, out int x, out int y)
+        {
+            dmsoft dm = GetDm();
+            string bmp = "";
+            for (int i = 0; i < bmps.Length; i++)
+            {
+                bmp = bmps[i];
+                if (FindPic(bmp, out x, out y))
+                {
+                    return true;
+                }
+            }
+            x = -1;
+            y = -1;
+            return false;
+        }
+
+        public static bool FindPic(string[] bmps)
+        {
+            int x, y;
+            return FindPic(bmps, out x, out y);
+        }
+
+        public static bool FindPic(string bmp)
+        {
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            int x, y;
+            double sim = 0.8;
             return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
         }
 
@@ -159,7 +245,7 @@ namespace KankoreMahoutsukai.utils
             dm.MoveTo(x, y);
             Utils.Delay(100);
             dm.LeftClick();
-            // Outputs.Log("x" + x.ToString() + " y" + y.ToString());
+            Outputs.Log("x" + x.ToString() + " y" + y.ToString());
         }
     }
 }

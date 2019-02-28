@@ -46,16 +46,16 @@ namespace KankoreMahoutsukai.process
 
         private static void SupplyTeam(int team)
         {
+            int x, y;
             string teamBmp = "supply_team" + team.ToString();
             string teamHoverBmp = "supply_team" + team.ToString() + "_hover";
-            if (!Operation.FindPic(185, 150, 365, 190, teamHoverBmp, 0.8))
+            if (!Operation.FindPic(teamHoverBmp))
             {
-                int x, y;
-                if (Operation.FindPic(185, 150, 365, 190, teamBmp, 0.8, out x, out y))
+                if (Operation.FindPic(teamBmp, out x, out y))
                 {
-                    Operation.Click(x, 20, y, 20, 250);
+                    Operation.Click(x, 15, y, 15, 250);
                     Utils.Delay(250);
-                    if (!Operation.FindPic(185, 150, 365, 190, teamHoverBmp, 0.8))
+                    if (!Operation.FindPic(teamHoverBmp))
                     {
                         Process.End("选择队伍失败");
                     }
@@ -70,13 +70,17 @@ namespace KankoreMahoutsukai.process
             while (w)
             {
                 Outputs.Log("等待补给完成");
-                if(Operation.FindPic(1010, 570, 1110, 620, "舰队全补给", 0.8))
+                if(Operation.FindPic("舰队全补给"))
                 {
                     w = false;
                 }
                 else
                 {
-                    Operation.Click(160, 20, 166, 18, 250);
+                    if (!Operation.FindPic("全部补给", out x, out y))
+                    {
+                        Process.End("补给失败");
+                    }
+                    Operation.Click(x, 25, y, 25, 250);
                 }
                 Utils.Delay(1000);
             }

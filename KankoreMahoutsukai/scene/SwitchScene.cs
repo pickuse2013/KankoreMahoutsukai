@@ -11,10 +11,10 @@ namespace KankoreMahoutsukai.scene
     class SwitchScene
     {
         // 查找切换场景需要的按钮
-        private static void Switch(int x1, int y1, int x2, int y2, string bmp, double sim, out int x, out int y, string scene)
+        private static void Switch(string bmp, out int x, out int y, string scene)
         {
             int i = 0;
-            while (!Operation.FindPic(x1, y1, x2, y2, bmp, sim, out x, out y))
+            while (!Operation.FindPic(bmp, out x, out y))
             {
                 i++;
                 if (i > 10)
@@ -31,8 +31,8 @@ namespace KankoreMahoutsukai.scene
         {
             Wating.Home();
             int x, y;
-            Switch(50, 240, 170, 380, "补给", 0.8, out x, out y, "补给");
-            Operation.Click(x + 20, 60, y + 10, 50, 0);
+            Switch("补给", out x, out y, "补给");
+            Operation.Click(x, 90, y, 70, 0);
             Wating.Supply();
         }
 
@@ -47,8 +47,8 @@ namespace KankoreMahoutsukai.scene
         {
             Wating.Home();
             int x, y;
-            Switch(170, 280, 380, 490, "出击", 0.8, out x, out y, "出击选择");
-            Operation.Click(x + 20, 80, y + 10, 50, 250);
+            Switch("出击", out x, out y, "出击选择");
+            Operation.Click(x, 130, y, 110, 250);
             Wating.AttackChoice();
         }
 
@@ -56,8 +56,8 @@ namespace KankoreMahoutsukai.scene
         {
             Wating.AttackChoice();
             int x, y;
-            Switch(200, 530, 440, 640, "出击说明", 0.8, out x, out y, "出击");
-            Operation.Click(x, 150, y - 280, 180, 0);
+            Switch("出击说明", out x, out y, "出击");
+            Operation.Click(x, 180, y - 330, 200, 0);
             Wating.SeaAreaChoice();
         }
     }

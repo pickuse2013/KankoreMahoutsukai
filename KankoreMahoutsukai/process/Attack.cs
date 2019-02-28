@@ -35,13 +35,13 @@ namespace KankoreMahoutsukai.process
             int seaArea = Process.seaArea;
             string seaAreaBmp = seaArea.ToString() + "图";
             string seaAreaHoverBmp = seaArea.ToString() + "图_hover";
-            if (!Operation.FindPic(160, 600, 810, 680, seaAreaHoverBmp, 0.8))
+            if (!Operation.FindPic(seaAreaHoverBmp))
             {
                 int x, y;
-                if (Operation.FindPic(160, 600, 810, 680, seaAreaBmp, 0.8, out x, out y))
+                if (Operation.FindPic(seaAreaBmp, out x, out y))
                 {
-                    Operation.Click(x, 50, y, 50, 250);
-                    if (!Operation.FindPic(160, 600, 810, 680, seaAreaHoverBmp, 0.8))
+                    Operation.Click(x, 50, y, 40, 250);
+                    if (!Operation.FindPic( seaAreaHoverBmp))
                     {
                         Process.End("选择海域失败");
                     }
@@ -62,15 +62,15 @@ namespace KankoreMahoutsukai.process
             int x, y;
             if (point > 0 && point <= 4)
             {
-                Operation.Click(200 + (point + 1) % 2 * 500, 200, 228 + Convert.ToInt32(Math.Floor(Convert.ToDouble(point / 3))) * 200, 0, 0);
+                Operation.Click(200 + (point + 1) % 2 * 500, 250, 220 + Convert.ToInt32(Math.Floor(Convert.ToDouble(point / 3))) * 220, 0, 0);
             }
             else
             {
-                if (Operation.FindPic(960, 320, 1100, 470, "前往扩展海域", 0.8, out x, out y))
+                if (Operation.FindPic("前往扩展海域", out x, out y))
                 {
-                    Operation.Click(x, 50, y, 60, 0);
+                    Operation.Click(x, 70, y, 80, 0);
                     Utils.Delay(500);
-                    Operation.Click(300, 700, (point - 5) * 140 + 228, 80, 0);
+                    Operation.Click(200, 900, (point - 5) * 144 + 220, 100, 0);
                 }
                 else
                 {
@@ -80,15 +80,15 @@ namespace KankoreMahoutsukai.process
 
             Wating.AttackInfo();
             string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString();
-            if (!Operation.FindPic(800, 210, 1100, 270, pointBmp, 0.8))
+            if (!Operation.FindPic(pointBmp))
             {
                 Process.End("选择关卡错误");
             }
-            if (!Operation.FindPic(820, 600, 1120, 680, "出击决定", 0.8, out x , out y))
+            if (!Operation.FindPic(new string[] { "出击决定", "出击决定_hover" }, out x, out y))
             {
                 Process.End("当前无法出击");
             }
-            Operation.Click(x, 250, y, 30, 0);
+            Operation.Click(x, 240, y, 40, 0);
             Outputs.Log("选择关卡" + seaArea + "-" + point);
             Utils.Delay(500);
         }
@@ -98,14 +98,14 @@ namespace KankoreMahoutsukai.process
             Outputs.Log("选择队伍中");
             string teamBmp = "team" + team.ToString();
             string teamHoverBmp = "team" + team.ToString() + "_hover";
-            if (!Operation.FindPic(490, 140, 670, 180, teamHoverBmp, 0.8))
+            if (!Operation.FindPic(teamHoverBmp))
             {
                 int x, y;
-                if (Operation.FindPic(490, 140, 670, 180, teamBmp, 0.8, out x, out y))
+                if (Operation.FindPic(teamBmp, out x, out y))
                 {
-                    Operation.Click(x, 20, y, 20, 250);
+                    Operation.Click(x, 15, y, 15, 250);
                     Utils.Delay(250);
-                    if (!Operation.FindPic(490, 140, 670, 180, teamHoverBmp, 0.8))
+                    if (!Operation.FindPic(teamHoverBmp))
                     {
                         Process.End("选择队伍失败");
                     }
@@ -129,12 +129,15 @@ namespace KankoreMahoutsukai.process
             int attackX;
             int attackY;
             Outputs.Log("队伍检查中");
-            if (!Operation.FindPic(730, 580, 1030, 680, "出击开始", 0.8, out attackX, out attackY))
+
+            if (Operation.FindPic("禁止出击"))
             {
-                if (!Operation.FindPic(730, 580, 1030, 680, "出击开始_hover", 0.8, out attackX, out attackY))
-                {
-                    Process.End("无法出击！");
-                }
+                Process.End("无法出击！");
+            }
+
+            if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out attackX, out attackY))
+            {
+                Process.End("出击失败！");
             }
 
             // 大破检查
