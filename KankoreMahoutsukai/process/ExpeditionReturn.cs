@@ -26,7 +26,7 @@ namespace KankoreMahoutsukai.process
                 bool w1 = true;
                 while (w1)
                 {
-                    if (Operation.FindPic("次", 0.5, out x, out y))
+                    if (Operation.FindPic("次", out x, out y))
                     {
                         Outputs.Log("远征结算");
                         Operation.Click(x, 40, y, 40, 250);
@@ -34,7 +34,7 @@ namespace KankoreMahoutsukai.process
                         bool w2 = true;
                         while (w2)
                         {
-                            if (Operation.FindPic("次", 0.5, out x, out y))
+                            if (Operation.FindPic("次", out x, out y))
                             {
                                 if (Operation.FindPic("远征归来2队", out x, out y))
                                 {

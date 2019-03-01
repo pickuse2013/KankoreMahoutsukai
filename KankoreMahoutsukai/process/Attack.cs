@@ -141,38 +141,34 @@ namespace KankoreMahoutsukai.process
             }
 
             // 大破检查
-            if (Operation.FindPic(500, 188, 750, 618, "大破", 0.5) || Operation.FindPic(500, 188, 750, 618, "黄脸大破", 0.5) || Operation.FindPic(500, 188, 750, 618, "红脸大破", 0.5))
+            if (Operation.FindPic(new string[] { "大破" }))
             {
                 Process.End("舰娘大破，无法出击");
             }
 
-            int x1, y1, x2, y2;
-
+            int x1 = 532, y1 = 197, x2 = 776, y2 = 256;
+            int space = 75;
             // 资源检查
             if (resourceIndex == 0)
             {
-                x1 = 500;
-                y1 = 188;
-                x2 = 750;
-                y2 = 618;
+                y1 = 197;
+                y2 = 256 + space * 5;
             }
             else
             {
-                x1 = 500;
-                y1 = 188 + (resourceIndex - 1) * 72;
-                x2 = 750;
-                y2 = 618 + (resourceIndex - 1) * 72;
+                y1 = 197 + (resourceIndex - 1) * space;
+                y2 = 256 + (resourceIndex - 1) * space;
             }
             if (resource > 0)
             {
                 if (resource == 1)
                 {
-                    if (Operation.FindPic(x1, y1, x2, y2, "油_黄色警告", 0.7))
+                    if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_黄色警告" }))
                     {
                         Process.End("资源未补给！");
                     }
                 }
-                if (Operation.FindPic(x1, y1, x2, y2, "油_红色警告", 0.7))
+                if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_红色警告", "弹_红色警告" }))
                 {
                     Process.End("资源未补给！");
                 }
@@ -181,17 +177,13 @@ namespace KankoreMahoutsukai.process
             // 疲劳检查
             if (fatigueIndex == 0)
             {
-                x1 = 500;
-                y1 = 188;
-                x2 = 750;
-                y2 = 618;
+                y1 = 197;
+                y2 = 256 + space * 5;
             }
             else
             {
-                x1 = 500;
-                y1 = 188 + (fatigueIndex - 1) * 72;
-                x2 = 750;
-                y2 = 618 + (fatigueIndex - 1) * 72;
+                y1 = 197 + (fatigueIndex - 1) * space;
+                y2 = 256 + (fatigueIndex - 1) * space;
             }
             if (fatigue > 0)
             {
@@ -211,17 +203,13 @@ namespace KankoreMahoutsukai.process
             // 破损检查
             if (breakageIndex == 0)
             {
-                x1 = 500;
-                y1 = 188;
-                x2 = 750;
-                y2 = 618;
+                y1 = 197;
+                y2 = 256 + space * 5;
             }
             else
             {
-                x1 = 500;
-                y1 = 188 + (breakageIndex - 1) * 72;
-                x2 = 750;
-                y2 = 618 + (breakageIndex - 1) * 72;
+                y1 = 197 + (breakageIndex - 1) * space;
+                y2 = 256 + (breakageIndex - 1) * space;
             }
             if (breakage > 0)
             {
@@ -262,10 +250,10 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 等待选择阵型
-                if (Operation.FindPic(350, 560, 750, 630, "请选择阵型", 0.8))
+                if (Operation.FindPic("请选择阵型", 0.8))
                 {
                     Outputs.Log("选择阵型中");
-                    if (!Operation.FindPic(500, 50, 1150, 540, formation, 0.8, out x, out y))
+                    if (!Operation.FindPic(formation, 0.8, out x, out y))
                     {
                         Outputs.Log("无所选阵型，即将选择单纵阵并撤退");
                         formation = "单纵阵";
@@ -284,7 +272,7 @@ namespace KankoreMahoutsukai.process
                         Outputs.Log("战斗中");
 
                         
-                        if (Operation.FindPic(1000, 540, 1153, 692, "次", 0.8, out x , out y))
+                        if (Operation.FindPic("次", 0.8, out x , out y))
                         {
                             Outputs.Log("战斗结束");
                             Operation.Click(x, 40, y, 40, 250);
@@ -293,11 +281,11 @@ namespace KankoreMahoutsukai.process
                             bool w3 = true;
                             while (w3)
                             {
-                                if (Operation.FindPic(1000, 540, 1153, 692, "次", 0.8, out x, out y))
+                                if (Operation.FindPic("次", 0.8, out x, out y))
                                 {
                                     Outputs.Log("战斗结算");
                                     // 战损检查
-                                    if (Operation.FindPic(270, 248, 520, 668, "战斗大破", 0.8))
+                                    if (Operation.FindPic("战斗大破", 0.8))
                                     {
                                         Outputs.Log("舰娘大破，即将撤退！");
                                         isAttack = false;
@@ -313,17 +301,17 @@ namespace KankoreMahoutsukai.process
                             }
 
                         }
-                        else if (Operation.FindPic(250, 220, 850, 450, "逃跑或夜战", 0.8, out x, out y))
+                        else if (Operation.FindPic("逃跑或夜战", 0.8, out x, out y))
                         {
                             if (isNightFighting)
                             {
                                 Outputs.Log("进入夜战");
-                                Operation.Click(x + 345, 120, y + 35, 70, 250);
+                                Operation.Click(x + 320, 140, y, 60, 250);
                             }
                             else
                             {
                                 Outputs.Log("脱离战斗");
-                                Operation.Click(x + 40, 80, y + 35, 70, 250);
+                                Operation.Click(x, 140, y, 60, 250);
                             }
                         }
                         Utils.Delay(1000);
@@ -331,38 +319,38 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 等待罗盘
-                if (Operation.FindPic(350, 560, 750, 630, "往哪走", 0.8))
+                if (Operation.FindPic("往哪走", 0.8))
                 {
                     Outputs.Log("旋转罗盘");
-                    Operation.Click(350, 600, 560, 40, 250);
+                    Operation.Click(350, 700, 600, 60, 250);
                     Utils.Delay(5000);// 罗盘旋转需要时间
                 }
 
                 // 等待新船归队
-                if (Operation.FindPic(1000, 540, 1153, 692, "归", 0.8, out x, out y))
+                if (Operation.FindPic("归", 0.8, out x, out y))
                 {
                     Outputs.Log("新船归队");
                     Operation.Click(x, 40, y, 40, 250);
                 }
 
                 // 等待进击或撤退
-                if (Operation.FindPic(250, 220, 850, 450, "进击或撤退", 0.8, out x, out y))
+                if (Operation.FindPic("进击或撤退", 0.8, out x, out y))
                 {
                     if (isAttack)
                     {
                         Outputs.Log("进击");
                         attackNum++;
-                        Operation.Click(x + 25, 140, y + 50, 50, 250);
+                        Operation.Click(x, 140, y, 50, 250);
                     }
                     else
                     {
                         Outputs.Log("撤退");
-                        Operation.Click(x + 340, 140, y + 50, 50, 250);
+                        Operation.Click(x + 330, 140, y, 50, 250);
                     }
                 }
 
                 // 旗舰大破
-                if (Operation.FindPic(800, 50, 1100, 250, "旗舰大破", 0.8))
+                if (Operation.FindPic("旗舰大破", 0.8))
                 {
                     Outputs.Log("旗舰大破，强制回港");
                     Operation.Click(850, 200, 370, 200, 250);

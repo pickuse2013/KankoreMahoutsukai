@@ -164,28 +164,32 @@ namespace KankoreMahoutsukai.utils
             return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
         }
 
-        public static bool FindPic(string bmp, double sim)
-        {
-            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1; 
-            int x, y;
-            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
-        }
-
         public static bool FindPic(string bmp, out int x, out int y)
         {
-            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
             double sim = 0.8;
-            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+            return FindPic(bmp, sim, out x, out y);
         }
 
-        public static bool FindPic(string[] bmps, out int x, out int y)
+        public static bool FindPic(string bmp, double sim)
+        {
+            int x, y;
+            return FindPic(bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string bmp)
+        {
+            double sim = 0.8;
+            return FindPic(bmp, sim);
+        }
+
+        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps, out int x, out int y)
         {
             dmsoft dm = GetDm();
             string bmp = "";
             for (int i = 0; i < bmps.Length; i++)
             {
                 bmp = bmps[i];
-                if (FindPic(bmp, out x, out y))
+                if (FindPic(x1, y1, x2, y2, bmp, 0.8, out x, out y))
                 {
                     return true;
                 }
@@ -195,19 +199,26 @@ namespace KankoreMahoutsukai.utils
             return false;
         }
 
+        public static bool FindPic(string[] bmps, out int x, out int y)
+        {
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            return FindPic(x1, y1, x2, y2, bmps, out x, out y);
+        }
+
+        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps)
+        {
+            int x, y;
+            return FindPic(x1, y1, x2, y2, bmps, out x, out y);
+        }
+
         public static bool FindPic(string[] bmps)
         {
             int x, y;
             return FindPic(bmps, out x, out y);
         }
 
-        public static bool FindPic(string bmp)
-        {
-            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
-            int x, y;
-            double sim = 0.8;
-            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
-        }
+
+
 
         private static void DebugBmp(int x1, int y1, int x2, int y2, string bmp)
         {
