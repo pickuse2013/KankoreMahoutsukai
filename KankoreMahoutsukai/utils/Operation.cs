@@ -217,6 +217,56 @@ namespace KankoreMahoutsukai.utils
             return FindPic(bmps, out x, out y);
         }
 
+        public static bool FindPic(string area, string bmp, double sim, out int x, out int y)
+        {
+
+            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            switch (area)
+            {
+                case "A":
+                    x1 = 0; y1 = 0; x2 = x1 + gameW / 2 - 1; y2 = y1 + gameH / 2 - 1;
+                    break;
+                case "B":
+                    x1 = gameW / 2 - 1; y1 = 0; x2 = x1 + gameW / 2; y2 = y1 + gameH / 2 - 1;
+                    break;
+                case "C":
+                    x1 = 0; y1 = gameH / 2 - 1; x2 = x1 + gameW / 2 - 1; y2 = y1 + gameH / 2;
+                    break;
+                case "D":
+                    x1 = gameW / 2 - 1; y1 = gameW / 2 - 1; x2 = x1 + gameW / 2; y2 = y1 + gameH / 2;
+                    break;
+                case "E":
+                    x1 = 0; y1 = 0; x2 = x1 + gameW - 1; y2 = y1 + gameH / 2 - 1;
+                    break;
+                case "F":
+                    x1 = 0; y1 = gameH / 2 - 1; x2 = x1 + gameW - 1; y2 = y1 + gameH / 2;
+                    break;
+            }
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string area, string bmp, out int x, out int y)
+        {
+            double sim = 0.8;
+            return FindPic(area, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string area, string bmp, double sim)
+        {
+            int x, y;
+            return FindPic(area, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string area, string bmp)
+        {
+            double sim = 0.8;
+            return FindPic(area, bmp, sim);
+        }
+
+
+
+
+
 
 
 

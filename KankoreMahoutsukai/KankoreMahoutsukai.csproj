@@ -90,6 +90,7 @@
     <Compile Include="process\Attack.cs" />
     <Compile Include="process\ExpeditionReturn.cs" />
     <Compile Include="process\Process.cs" />
+    <Compile Include="process\Round.cs" />
     <Compile Include="process\Supply.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

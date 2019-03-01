@@ -63,5 +63,16 @@ namespace KankoreMahoutsukai
             Process.End();
 
         }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            this.log.Text = "";
+        }
+
+        private void log_TextChanged(object sender, EventArgs e)
+        {
+            form1.log.SelectionStart = form1.log.TextLength;
+            form1.log.ScrollToCaret();
+        }
     }
 }

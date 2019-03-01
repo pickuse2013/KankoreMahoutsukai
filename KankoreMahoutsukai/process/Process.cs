@@ -54,6 +54,16 @@ namespace KankoreMahoutsukai.process
                 Outputs.Msg("脚本已在运行");
                 return;
             }
+            Form1.form1.point.Enabled = false;
+            Form1.form1.resourceIndex.Enabled = false;
+            Form1.form1.resource.Enabled = false;
+            Form1.form1.fatigueIndex.Enabled = false;
+            Form1.form1.fatigue.Enabled = false;
+            Form1.form1.breakageIndex.Enabled = false;
+            Form1.form1.breakage.Enabled = false;
+            Form1.form1.formation.Enabled = false;
+            Form1.form1.isNightFighting.Enabled = false;
+            Form1.form1.aimAttackNum.ReadOnly = true;
             Form1.form1.start.Enabled = false;
             Form1.form1.end.Enabled = true;
             Form1.form1.attackCount.ReadOnly = true;
@@ -70,6 +80,17 @@ namespace KankoreMahoutsukai.process
             }
             key = false;
             Outputs.Log("脚本已停止");
+
+            Form1.form1.point.Enabled = true;
+            Form1.form1.resourceIndex.Enabled = true;
+            Form1.form1.resource.Enabled = true;
+            Form1.form1.fatigueIndex.Enabled = true;
+            Form1.form1.fatigue.Enabled = true;
+            Form1.form1.breakageIndex.Enabled = true;
+            Form1.form1.breakage.Enabled = true;
+            Form1.form1.formation.Enabled = true;
+            Form1.form1.isNightFighting.Enabled = true;
+            Form1.form1.aimAttackNum.ReadOnly = false;
             Form1.form1.start.Enabled = true;
             Form1.form1.end.Enabled = false;
             Form1.form1.attackCount.ReadOnly = false;
@@ -113,7 +134,7 @@ namespace KankoreMahoutsukai.process
 
         private static bool processControl()
         {
-            Utils.Delay(1000);
+            Utils.Delay(500);
             switch (step)
             {
                 case 0:
@@ -122,6 +143,8 @@ namespace KankoreMahoutsukai.process
                     return Supply.Execution();
                 case 2:
                     return Attack.Execution();
+                case 3:
+                    return Round.Execution();
             }
             ResetProcess();
             return true;

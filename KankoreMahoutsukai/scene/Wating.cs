@@ -53,7 +53,7 @@ namespace KankoreMahoutsukai.scene
 
         public static void TeamChoice()
         {
-            Wati(Determine.InTeamChoice, "海域选择");
+            Wati(Determine.InTeamChoice, "舰队选择");
         }
 
     }

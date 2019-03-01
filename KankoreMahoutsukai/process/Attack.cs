@@ -95,6 +95,7 @@ namespace KankoreMahoutsukai.process
 
         private static void ChoiceTeam(int team)
         {
+            Wating.TeamChoice();
             Outputs.Log("选择队伍中");
             string teamBmp = "team" + team.ToString();
             string teamHoverBmp = "team" + team.ToString() + "_hover";
@@ -250,10 +251,10 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 等待选择阵型
-                if (Operation.FindPic("请选择阵型", 0.8))
+                if (Operation.FindPic("F", "请选择阵型"))
                 {
                     Outputs.Log("选择阵型中");
-                    if (!Operation.FindPic(formation, 0.8, out x, out y))
+                    if (!Operation.FindPic(formation, out x, out y))
                     {
                         Outputs.Log("无所选阵型，即将选择单纵阵并撤退");
                         formation = "单纵阵";
@@ -272,7 +273,7 @@ namespace KankoreMahoutsukai.process
                         Outputs.Log("战斗中");
 
                         
-                        if (Operation.FindPic("次", 0.8, out x , out y))
+                        if (Operation.FindPic("D", "次", out x , out y))
                         {
                             Outputs.Log("战斗结束");
                             Operation.Click(x, 40, y, 40, 250);
@@ -281,7 +282,7 @@ namespace KankoreMahoutsukai.process
                             bool w3 = true;
                             while (w3)
                             {
-                                if (Operation.FindPic("次", 0.8, out x, out y))
+                                if (Operation.FindPic("D", "次", out x, out y))
                                 {
                                     Outputs.Log("战斗结算");
                                     // 战损检查
@@ -319,7 +320,7 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 等待罗盘
-                if (Operation.FindPic("往哪走", 0.8))
+                if (Operation.FindPic("C", "往哪走"))
                 {
                     Outputs.Log("旋转罗盘");
                     Operation.Click(350, 700, 600, 60, 250);
@@ -327,14 +328,14 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 等待新船归队
-                if (Operation.FindPic("归", 0.8, out x, out y))
+                if (Operation.FindPic("D", "归", out x, out y))
                 {
                     Outputs.Log("新船归队");
                     Operation.Click(x, 40, y, 40, 250);
                 }
 
                 // 等待进击或撤退
-                if (Operation.FindPic("进击或撤退", 0.8, out x, out y))
+                if (Operation.FindPic("进击或撤退", out x, out y))
                 {
                     if (isAttack)
                     {
@@ -350,7 +351,7 @@ namespace KankoreMahoutsukai.process
                 }
 
                 // 旗舰大破
-                if (Operation.FindPic("旗舰大破", 0.8))
+                if (Operation.FindPic("B", "旗舰大破"))
                 {
                     Outputs.Log("旗舰大破，强制回港");
                     Operation.Click(850, 200, 370, 200, 250);

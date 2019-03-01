@@ -58,6 +58,7 @@
             this.log = new System.Windows.Forms.TextBox();
             this.start = new System.Windows.Forms.Button();
             this.end = new System.Windows.Forms.Button();
+            this.clear = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -405,6 +406,7 @@
             this.log.Size = new System.Drawing.Size(200, 280);
             this.log.TabIndex = 4;
             this.log.WordWrap = false;
+            this.log.TextChanged += new System.EventHandler(this.log_TextChanged);
             // 
             // start
             // 
@@ -427,12 +429,23 @@
             this.end.UseVisualStyleBackColor = true;
             this.end.Click += new System.EventHandler(this.end_Click);
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(546, 30);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(84, 23);
+            this.clear.TabIndex = 7;
+            this.clear.Text = "clear";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(654, 401);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.end);
             this.Controls.Add(this.start);
             this.Controls.Add(this.log);
@@ -487,6 +500,7 @@
         public System.Windows.Forms.TextBox attackCount;
         public System.Windows.Forms.Button start;
         public System.Windows.Forms.Button end;
+        public System.Windows.Forms.Button clear;
     }
 }
 
