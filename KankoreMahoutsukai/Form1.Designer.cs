@@ -169,7 +169,7 @@
             this.formation.Items.AddRange(new object[] {
             "单纵阵",
             "复纵阵",
-            "警戒阵",
+            "轮形阵",
             "梯形阵",
             "单横阵"});
             this.formation.Location = new System.Drawing.Point(70, 150);

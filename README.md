@@ -25,6 +25,16 @@
 
 - 目前版本请使用poi浏览器，游戏分辨率固定**1200*720**
 
+## 项目介绍
+
+- 流程图
+  ![流程图](https://raw.githubusercontent.com/Sakurai233/KankoreMahoutsukai/develop/README/%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
+- 寻图分区
+  ![ABCD](https://raw.githubusercontent.com/Sakurai233/KankoreMahoutsukai/develop/README/ABCD.bmp)
+  ![ABCD](https://raw.githubusercontent.com/Sakurai233/KankoreMahoutsukai/develop/README/EF.bmp)
+
+
 ## 项目进度
 - 自动收远征 √
 - 自动出击 √
