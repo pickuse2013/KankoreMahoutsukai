@@ -413,7 +413,7 @@ namespace KankoreMahoutsukai.process
 
         public AttackException(string msg) : base(msg)
         {
-            this.error = msg;
+            error = msg;
         }
         public string GetError()
         {

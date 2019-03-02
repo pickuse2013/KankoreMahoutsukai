@@ -100,6 +100,11 @@ namespace KankoreMahoutsukai.process
             End();
         }
 
+        public static bool GetStatus()
+        {
+            return key;
+        }
+
         private static void StartProcess()
         {
             key = true;

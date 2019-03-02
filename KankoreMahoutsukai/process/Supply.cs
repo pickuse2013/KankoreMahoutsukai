@@ -19,17 +19,32 @@ namespace KankoreMahoutsukai.process
             }
             SwitchScene.HomeToSupply();
 
-            for (int i = 0; i < Process.supplyTeam.Length; i++)
+
+            try
             {
-                if (Process.supplyTeam[i])
+                for (int i = 0; i < Process.supplyTeam.Length; i++)
                 {
-                    SupplyTeam(i + 1);
+                    if (Process.supplyTeam[i])
+                    {
+                        SupplyTeam(i + 1);
+                    }
                 }
+                Outputs.Log("全部补给完毕");
+                SwitchScene.SupplyToHome();
+                Process.ResetProcess();
             }
-            Outputs.Log("全部补给完毕");
-            SwitchScene.SupplyToHome();
-            Process.ResetProcess();
+            catch (SupplyException)
+            {
+                Operation.Click(20, 100, 10, 110, 0);
+            }
             return true;
+        }
+
+        private static void End(string msg)
+        {
+            Outputs.Log("msg");
+            Process.ResetProcess();
+            throw new SupplyException(msg);
         }
 
         private static void SupplyTeam(int team)
@@ -45,12 +60,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        Process.End("选择队伍失败");
+                        End("选择队伍失败");
                     }
                 }
                 else
                 {
-                    Process.End("选择队伍失败");
+                    End("选择队伍失败");
                 }
             }
 
@@ -66,7 +81,7 @@ namespace KankoreMahoutsukai.process
                 {
                     if (!Operation.FindPic("全部补给", out x, out y))
                     {
-                        Process.End("补给失败");
+                        End("补给失败");
                     }
                     Operation.Click(x, 25, y, 25, 250);
                 }
@@ -74,6 +89,20 @@ namespace KankoreMahoutsukai.process
             }
             Process.supplyTeam[team - 1] = false;
             Outputs.Log("补给team" + team + "完成");
+        }
+    }
+
+    class SupplyException : ApplicationException
+    {
+        private string error;
+
+        public SupplyException(string msg) : base(msg)
+        {
+            error = msg;
+        }
+        public string GetError()
+        {
+            return error;
         }
     }
 }

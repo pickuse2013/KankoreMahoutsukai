@@ -74,5 +74,22 @@ namespace KankoreMahoutsukai
             form1.log.SelectionStart = form1.log.TextLength;
             form1.log.ScrollToCaret();
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Process.GetStatus())
+            {
+                DialogResult dr = MessageBox.Show("脚本正在执行中，确定要退出吗", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if (dr == DialogResult.OK)   //如果单击“是”按钮
+                {
+                    Process.End();
+                    e.Cancel = false;                 //关闭窗体
+                }
+                else if (dr == DialogResult.Cancel)
+                {
+                    e.Cancel = true;                  //不执行操作
+                }
+            }
+        }
     }
 }
