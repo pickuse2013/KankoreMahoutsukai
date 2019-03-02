@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KankoreMahoutsukai.process;
-using KankoreMahoutsukai.utils;
 
 namespace KankoreMahoutsukai
 {
@@ -33,6 +32,9 @@ namespace KankoreMahoutsukai
             this.breakage.SelectedIndex = 0;
             this.formation.SelectedIndex = 0;
             this.isNightFighting.SelectedIndex = 0;
+            this.expedition1.SelectedIndex = 0;
+            this.expedition2.SelectedIndex = 0;
+            this.expedition3.SelectedIndex = 0;
         }
 
         private void start_Click(object sender, EventArgs e)
@@ -89,6 +91,48 @@ namespace KankoreMahoutsukai
                 {
                     e.Cancel = true;                  //不执行操作
                 }
+            }
+        }
+
+        private void expedition1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var expedition = expedition1;
+            int i1 = expedition2.SelectedIndex;
+            int i2 = expedition3.SelectedIndex;
+            int index = expedition.SelectedIndex;
+
+            if (i1 != 0 && i1 == index || i2 != 0 && i2 == index)
+            {
+                MessageBox.Show("远征不能重复！");
+                expedition.SelectedIndex = 0;
+            }
+        }
+
+        private void expedition2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var expedition = expedition2;
+            int i1 = expedition1.SelectedIndex;
+            int i2 = expedition3.SelectedIndex;
+            int index = expedition.SelectedIndex;
+
+            if (i1 != 0 && i1 == index || i2 != 0 && i2 == index)
+            {
+                MessageBox.Show("远征不能重复！");
+                expedition.SelectedIndex = 0;
+            }
+        }
+
+        private void expedition3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var expedition = expedition3;
+            int i1 = expedition1.SelectedIndex;
+            int i2 = expedition2.SelectedIndex;
+            int index = expedition.SelectedIndex;
+
+            if (i1 != 0 && i1 == index || i2 != 0 && i2 == index)
+            {
+                MessageBox.Show("远征不能重复！");
+                expedition.SelectedIndex = 0;
             }
         }
     }

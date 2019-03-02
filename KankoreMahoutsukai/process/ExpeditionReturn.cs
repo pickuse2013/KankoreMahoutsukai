@@ -39,21 +39,21 @@ namespace KankoreMahoutsukai.process
                                 if (Operation.FindPic("远征归来2队", out x, out y))
                                 {
                                     Process.supplyTeam[1] = true;
-                                    Process.expeditionTeam2 = true;
+                                    Process.expeditionTeam[0] = true;
                                     Outputs.Log("远征2队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }
                                 if (Operation.FindPic("远征归来3队", out x, out y))
                                 {
                                     Process.supplyTeam[2] = true;
-                                    Process.expeditionTeam3 = true;
+                                    Process.expeditionTeam[1] = true;
                                     Outputs.Log("远征3队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }
                                 if (Operation.FindPic("远征归来4队", out x, out y))
                                 {
                                     Process.supplyTeam[3] = true;
-                                    Process.expeditionTeam4 = true;
+                                    Process.expeditionTeam[2] = true;
                                     Outputs.Log("远征4队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }

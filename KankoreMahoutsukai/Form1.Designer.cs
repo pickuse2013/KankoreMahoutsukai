@@ -59,8 +59,15 @@
             this.start = new System.Windows.Forms.Button();
             this.end = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.expedition1 = new System.Windows.Forms.ComboBox();
+            this.expedition2 = new System.Windows.Forms.ComboBox();
+            this.expedition3 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -370,6 +377,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.expedition3);
+            this.tabPage2.Controls.Add(this.expedition2);
+            this.tabPage2.Controls.Add(this.expedition1);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -439,6 +452,195 @@
             this.clear.UseVisualStyleBackColor = true;
             this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(20, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "远征1队";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(20, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 20);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "远征2队";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(20, 100);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 20);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "远征3队";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // expedition1
+            // 
+            this.expedition1.DisplayMember = "0";
+            this.expedition1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.expedition1.FormattingEnabled = true;
+            this.expedition1.Items.AddRange(new object[] {
+            "不远征",
+            "1 练习航海",
+            "2 长距离练习航海",
+            "3 警备任务",
+            "4 对潜警戒任务",
+            "5 海上护卫任务",
+            "6 防空射击演习",
+            "7 观舰式予行",
+            "8 观舰式",
+            "9 油轮护卫任务",
+            "10 强行侦察任务",
+            "11 铝土矿输送任务",
+            "12 资源输送任务",
+            "13 鼠输送作战",
+            "14 包围圈内陆战队撤收作战",
+            "15 诱饵机动部队支援作战",
+            "16 舰队决战支援作战",
+            "17 敌方阵地侦察作战",
+            "18 舰载机输送作战",
+            "19 北号作战",
+            "20 潜水舰哨戒任务",
+            "21 北方鼠输送作战",
+            "22 舰队演习",
+            "23 航空战舰运用演习",
+            "24 北方航路海上护卫",
+            "25 通商破坏作战",
+            "26 敌母港空袭作战",
+            "27 潜水舰通商破坏作战",
+            "28 西方海域封锁作战",
+            "29 潜水舰派遣演习",
+            "30 潜水舰派遣作战",
+            "31 海外舰的接触",
+            "32 远洋练习航海",
+            "33 前卫支援任务",
+            "34 舰队决战支援任务",
+            "35 MO作战",
+            "36 水上飞机基地建设",
+            "37 东京急行",
+            "38 东京急行(二)",
+            "39 远洋潜水舰作战",
+            "40 水上机前线输送"});
+            this.expedition1.Location = new System.Drawing.Point(100, 20);
+            this.expedition1.Name = "expedition1";
+            this.expedition1.Size = new System.Drawing.Size(200, 20);
+            this.expedition1.TabIndex = 11;
+            this.expedition1.ValueMember = "0";
+            this.expedition1.SelectedIndexChanged += new System.EventHandler(this.expedition1_SelectedIndexChanged);
+            // 
+            // expedition2
+            // 
+            this.expedition2.DisplayMember = "0";
+            this.expedition2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.expedition2.FormattingEnabled = true;
+            this.expedition2.Items.AddRange(new object[] {
+            "不远征",
+            "1 练习航海",
+            "2 长距离练习航海",
+            "3 警备任务",
+            "4 对潜警戒任务",
+            "5 海上护卫任务",
+            "6 防空射击演习",
+            "7 观舰式予行",
+            "8 观舰式",
+            "9 油轮护卫任务",
+            "10 强行侦察任务",
+            "11 铝土矿输送任务",
+            "12 资源输送任务",
+            "13 鼠输送作战",
+            "14 包围圈内陆战队撤收作战",
+            "15 诱饵机动部队支援作战",
+            "16 舰队决战支援作战",
+            "17 敌方阵地侦察作战",
+            "18 舰载机输送作战",
+            "19 北号作战",
+            "20 潜水舰哨戒任务",
+            "21 北方鼠输送作战",
+            "22 舰队演习",
+            "23 航空战舰运用演习",
+            "24 北方航路海上护卫",
+            "25 通商破坏作战",
+            "26 敌母港空袭作战",
+            "27 潜水舰通商破坏作战",
+            "28 西方海域封锁作战",
+            "29 潜水舰派遣演习",
+            "30 潜水舰派遣作战",
+            "31 海外舰的接触",
+            "32 远洋练习航海",
+            "33 前卫支援任务",
+            "34 舰队决战支援任务",
+            "35 MO作战",
+            "36 水上飞机基地建设",
+            "37 东京急行",
+            "38 东京急行(二)",
+            "39 远洋潜水舰作战",
+            "40 水上机前线输送"});
+            this.expedition2.Location = new System.Drawing.Point(100, 60);
+            this.expedition2.Name = "expedition2";
+            this.expedition2.Size = new System.Drawing.Size(200, 20);
+            this.expedition2.TabIndex = 12;
+            this.expedition2.ValueMember = "0";
+            this.expedition2.SelectedIndexChanged += new System.EventHandler(this.expedition2_SelectedIndexChanged);
+            // 
+            // expedition3
+            // 
+            this.expedition3.DisplayMember = "0";
+            this.expedition3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.expedition3.FormattingEnabled = true;
+            this.expedition3.Items.AddRange(new object[] {
+            "不远征",
+            "1 练习航海",
+            "2 长距离练习航海",
+            "3 警备任务",
+            "4 对潜警戒任务",
+            "5 海上护卫任务",
+            "6 防空射击演习",
+            "7 观舰式予行",
+            "8 观舰式",
+            "9 油轮护卫任务",
+            "10 强行侦察任务",
+            "11 铝土矿输送任务",
+            "12 资源输送任务",
+            "13 鼠输送作战",
+            "14 包围圈内陆战队撤收作战",
+            "15 诱饵机动部队支援作战",
+            "16 舰队决战支援作战",
+            "17 敌方阵地侦察作战",
+            "18 舰载机输送作战",
+            "19 北号作战",
+            "20 潜水舰哨戒任务",
+            "21 北方鼠输送作战",
+            "22 舰队演习",
+            "23 航空战舰运用演习",
+            "24 北方航路海上护卫",
+            "25 通商破坏作战",
+            "26 敌母港空袭作战",
+            "27 潜水舰通商破坏作战",
+            "28 西方海域封锁作战",
+            "29 潜水舰派遣演习",
+            "30 潜水舰派遣作战",
+            "31 海外舰的接触",
+            "32 远洋练习航海",
+            "33 前卫支援任务",
+            "34 舰队决战支援任务",
+            "35 MO作战",
+            "36 水上飞机基地建设",
+            "37 东京急行",
+            "38 东京急行(二)",
+            "39 远洋潜水舰作战",
+            "40 水上机前线输送"});
+            this.expedition3.Location = new System.Drawing.Point(100, 100);
+            this.expedition3.Name = "expedition3";
+            this.expedition3.Size = new System.Drawing.Size(200, 20);
+            this.expedition3.TabIndex = 13;
+            this.expedition3.ValueMember = "0";
+            this.expedition3.SelectedIndexChanged += new System.EventHandler(this.expedition3_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -465,6 +667,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,6 +705,12 @@
         public System.Windows.Forms.Button start;
         public System.Windows.Forms.Button end;
         public System.Windows.Forms.Button clear;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.ComboBox expedition1;
+        public System.Windows.Forms.ComboBox expedition3;
+        public System.Windows.Forms.ComboBox expedition2;
     }
 }
 

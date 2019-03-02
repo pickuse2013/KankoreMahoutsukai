@@ -40,9 +40,7 @@ namespace KankoreMahoutsukai.process
         public static bool[] supplyTeam = { false, false, false, false };
 
         // 是否需要远征
-        public static bool expeditionTeam2 = false;
-        public static bool expeditionTeam3 = false;
-        public static bool expeditionTeam4 = false;
+        public static bool[] expeditionTeam = { false, false, false};
 
         public static void Start ()
         {

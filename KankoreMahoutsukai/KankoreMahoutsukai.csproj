@@ -88,6 +88,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="process\Attack.cs" />
+    <Compile Include="process\Expedition.cs" />
     <Compile Include="process\ExpeditionReturn.cs" />
     <Compile Include="process\Process.cs" />
     <Compile Include="process\Round.cs" />
