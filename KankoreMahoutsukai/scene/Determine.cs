@@ -39,5 +39,10 @@ namespace KankoreMahoutsukai.scene
         {
             return Operation.FindPic("E", "舰队选择");
         }
+
+        public static bool InExpeditionChoice()
+        {
+            return Operation.FindPic("A", "远征选择");
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace KankoreMahoutsukai.process
 
         // 是否需要远征
         public static bool[] expeditionTeam = { false, false, false};
+        public static int[] expedition = { 0, 0, 0 };
 
         public static void Start ()
         {
@@ -62,6 +63,9 @@ namespace KankoreMahoutsukai.process
             Form1.form1.start.Enabled = false;
             Form1.form1.end.Enabled = true;
             Form1.form1.attackCount.ReadOnly = true;
+            Form1.form1.expedition1.Enabled = false;
+            Form1.form1.expedition2.Enabled = false;
+            Form1.form1.expedition3.Enabled = false;
             thread = new Thread(new ThreadStart(StartProcess));
             thread.Start();
         }
@@ -89,6 +93,9 @@ namespace KankoreMahoutsukai.process
             Form1.form1.start.Enabled = true;
             Form1.form1.end.Enabled = false;
             Form1.form1.attackCount.ReadOnly = false;
+            Form1.form1.expedition1.Enabled = true;
+            Form1.form1.expedition2.Enabled = true;
+            Form1.form1.expedition3.Enabled = true;
             thread.Abort();
         }
 
@@ -131,27 +138,6 @@ namespace KankoreMahoutsukai.process
             }
 
         }
-
-        private static bool processControl()
-        {
-            Utils.Delay(500);
-            switch (step)
-            {
-                case 0:
-                    return ExpeditionReturn.Execution();
-                case 1:
-                    return Supply.Execution();
-                case 2:
-                    return Attack.Execution();
-                case 3:
-                    return Round.Execution();
-            }
-            ResetProcess();
-            return true;
-        }
-
-        // 流程归0
-        public static void ResetProcess() => step = -1;
 
         private static bool Config()
         {
@@ -203,9 +189,55 @@ namespace KankoreMahoutsukai.process
             attackCount = Convert.ToInt32(Form1.form1.attackCount.Text);
             config += "出击次数 " + Form1.form1.attackCount.Text + System.Environment.NewLine;
 
+            expedition[0] = Form1.form1.expedition1.SelectedIndex;
+            if (expedition[0] > 0)
+            {
+                expeditionTeam[0] = true;
+            }
+            config += "2队：" + Form1.form1.expedition1.Text + System.Environment.NewLine;
+
+            expedition[1] = Form1.form1.expedition2.SelectedIndex;
+            if (expedition[1] > 0)
+            {
+                expeditionTeam[1] = true;
+            }
+            config += "3队：" + Form1.form1.expedition2.Text + System.Environment.NewLine;
+
+            expedition[2] = Form1.form1.expedition3.SelectedIndex;
+            if (expedition[2] > 0)
+            {
+                expeditionTeam[2] = true;
+            }
+            config += "4队：" + Form1.form1.expedition3.Text + System.Environment.NewLine;
+
             config += "==========";
             Outputs.Log(config);
             return true;
         }
+
+        private static bool processControl()
+        {
+            Utils.Delay(500);
+            switch (step)
+            {
+                case 0:
+                    return ExpeditionReturn.Execution();
+                case 1:
+                    return Supply.Execution();
+                case 2:
+                    return Expedition.Execution();
+                case 3:
+                    return Attack.Execution();
+                    //case 3:
+                    //    return Round.Execution();
+            }
+            ResetProcess();
+            return true;
+        }
+
+        // 流程归0
+        public static void ResetProcess() => step = -1;
+
+
     }
 }

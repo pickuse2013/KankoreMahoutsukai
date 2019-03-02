@@ -56,5 +56,10 @@ namespace KankoreMahoutsukai.scene
             Wati(Determine.InTeamChoice, "舰队选择");
         }
 
+        public static void ExpeditionChoice()
+        {
+            Wati(Determine.InExpeditionChoice, "远征选择");
+        }
+
     }
 }

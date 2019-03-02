@@ -12,16 +12,14 @@ namespace KankoreMahoutsukai.process
     {
         public static bool Execution()
         {
-            if (Process.supplyTeam[0] == false && Process.supplyTeam[1] == false && Process.supplyTeam[2] == false && Process.supplyTeam[3] == false)
+            if (!Process.supplyTeam[0] && !Process.supplyTeam[1] && !Process.supplyTeam[2] && !Process.supplyTeam[3])
             {
                 Outputs.Log("不需要补给");
                 return true;
             }
-            SwitchScene.HomeToSupply();
-
-
             try
             {
+                SwitchScene.HomeToSupply();
                 for (int i = 0; i < Process.supplyTeam.Length; i++)
                 {
                     if (Process.supplyTeam[i])
@@ -42,7 +40,7 @@ namespace KankoreMahoutsukai.process
 
         private static void End(string msg)
         {
-            Outputs.Log("msg");
+            Outputs.Log(msg);
             Process.ResetProcess();
             throw new SupplyException(msg);
         }

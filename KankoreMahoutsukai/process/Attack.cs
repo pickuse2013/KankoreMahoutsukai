@@ -62,6 +62,7 @@ namespace KankoreMahoutsukai.process
                 if (Operation.FindPic(seaAreaBmp, out x, out y))
                 {
                     Operation.Click(x, 50, y, 40, 250);
+                    Utils.Delay(250);
                     if (!Operation.FindPic( seaAreaHoverBmp))
                     {
                         End("选择海域失败", true);
@@ -72,7 +73,7 @@ namespace KankoreMahoutsukai.process
                     End("选择海域失败", true);
                 }
             }
-            Utils.Delay(250);
+
         }
 
         private static void ChoicePoint()
@@ -103,9 +104,9 @@ namespace KankoreMahoutsukai.process
             string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString();
             if (!Operation.FindPic("B", pointBmp))
             {
-                End("选择关卡错误" + pointBmp, true);
+                End("选择关卡失败" + pointBmp, true);
             }
-            if (!Operation.FindPic(new string[] { "出击决定", "出击决定_hover" }, out x, out y))
+            if (!Operation.FindPic("D", new string[] { "出击决定", "出击决定_hover" }, out x, out y))
             {
                 End("当前无法出击");
             }
@@ -166,7 +167,7 @@ namespace KankoreMahoutsukai.process
             }
 
             // 大破检查
-            if (Operation.FindPic(new string[] { "大破" }))
+            if (Operation.FindPic("大破") || Operation.FindPic("大破") || Operation.FindPic("大破"))
             {
                 isBreakage = true;
                 Outputs.Log("舰娘大破，无法出击");

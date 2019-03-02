@@ -208,6 +208,12 @@ namespace KankoreMahoutsukai.utils
             return FindPic(x1, y1, x2, y2, bmps, sim, out int x, out int y);
         }
 
+        public static bool FindPic(string area, string[] bmps, out int x, out int y)
+        {
+            Partition(area, out int x1, out int y1, out int x2, out int y2);
+            return FindPic(x1, y1, x2, y2, bmps, out x, out y);
+        }
+
         public static bool FindPic(string[] bmps, out int x, out int y)
         {
             int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
@@ -227,7 +233,33 @@ namespace KankoreMahoutsukai.utils
         public static bool FindPic(string area, string bmp, double sim, out int x, out int y)
         {
 
-            int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
+            Partition(area, out int x1, out int y1, out int x2, out int y2);
+            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string area, string bmp, out int x, out int y)
+        {
+            double sim = 0.8;
+            return FindPic(area, bmp, sim, out x, out y);
+        }
+
+        public static bool FindPic(string area, string bmp, double sim)
+        {
+            return FindPic(area, bmp, sim, out int x, out int y);
+        }
+
+        public static bool FindPic(string area, string bmp)
+        {
+            double sim = 0.8;
+            return FindPic(area, bmp, sim);
+        }
+
+        private static void Partition(string area, out int x1, out int y1, out int x2, out int y2)
+        {
+            x1 = 0;
+            y1 = 0;
+            x2 = x1 + gameW - 1;
+            y2 = y1 + gameH - 1;
             switch (area)
             {
                 case "A":
@@ -249,24 +281,6 @@ namespace KankoreMahoutsukai.utils
                     x1 = 0; y1 = gameH / 2 - 1; x2 = x1 + gameW - 1; y2 = y1 + gameH / 2;
                     break;
             }
-            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
-        }
-
-        public static bool FindPic(string area, string bmp, out int x, out int y)
-        {
-            double sim = 0.8;
-            return FindPic(area, bmp, sim, out x, out y);
-        }
-
-        public static bool FindPic(string area, string bmp, double sim)
-        {
-            return FindPic(area, bmp, sim, out int x, out int y);
-        }
-
-        public static bool FindPic(string area, string bmp)
-        {
-            double sim = 0.8;
-            return FindPic(area, bmp, sim);
         }
 
 

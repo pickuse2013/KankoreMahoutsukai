@@ -74,5 +74,13 @@ namespace KankoreMahoutsukai.scene
             Operation.Click(x, 200, y, 200, 0);
             Wating.SeaAreaChoice();
         }
+
+        public static void AttackChoiceToExpeditionChoice()
+        {
+            Wating.AttackChoice();
+            Switch(new string[] { "出击选择远征", "出击选择远征_hover" }, out int x, out int y, "远征");
+            Operation.Click(x, 200, y, 200, 0);
+            Wating.ExpeditionChoice();
+        }
     }
 }
