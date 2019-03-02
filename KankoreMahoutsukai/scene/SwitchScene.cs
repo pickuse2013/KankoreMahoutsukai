@@ -26,6 +26,21 @@ namespace KankoreMahoutsukai.scene
             }
         }
 
+        private static void Switch(string[] bmps, out int x, out int y, string scene)
+        {
+            int i = 0;
+            while (!Operation.FindPic(bmps, out x, out y))
+            {
+                i++;
+                if (i > 10)
+                {
+                    Process.End("超时，进入" + scene + "失败");
+                }
+                Outputs.Log("正在进入" + scene);
+                Utils.Delay(1000);
+            }
+        }
+
 
         public static void HomeToSupply()
         {
@@ -55,9 +70,8 @@ namespace KankoreMahoutsukai.scene
         public static void AttackChoiceToSeaAreaChoice()
         {
             Wating.AttackChoice();
-            int x, y;
-            Switch("出击说明", out x, out y, "出击");
-            Operation.Click(x, 180, y - 330, 200, 0);
+            Switch(new string[] { "出击选择出击", "出击选择出击_hover" }, out int x, out int y, "出击");
+            Operation.Click(x, 200, y, 200, 0);
             Wating.SeaAreaChoice();
         }
     }

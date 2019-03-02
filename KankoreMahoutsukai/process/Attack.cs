@@ -10,23 +10,44 @@ namespace KankoreMahoutsukai.process
 {
     class Attack
     {
+        private static int team = 1;
         public static bool Execution()
         {
             if (Process.attackCount <= 0)
             {
                 return true;
             }
-            SwitchScene.HomeToAttackChoice();
-            SwitchScene.AttackChoiceToSeaAreaChoice();
-            ChoiceSeaArea();
-            ChoicePoint();
-            ChoiceTeam(1);
-            CheckTeam();
-            Battle();
-            Process.attackCount--;
-            Form1.form1.attackCount.Text = Process.attackCount.ToString();
-            Process.ResetProcess();
+            try
+            {
+                SwitchScene.HomeToAttackChoice();
+                SwitchScene.AttackChoiceToSeaAreaChoice();
+                ChoiceSeaArea();
+                ChoicePoint();
+                ChoiceTeam();
+                CheckTeam();
+                Battle();
+                Process.attackCount--;
+                Form1.form1.attackCount.Text = Process.attackCount.ToString();
+                Process.ResetProcess();
+            }
+            catch (AttackException)
+            {
+                Operation.Click(20, 100, 10, 110, 0);
+            }
+
             return true;
+        }
+
+        private static void End(string  msg)
+        {
+            Outputs.Log(msg);
+            throw new AttackException(msg);
+        }
+
+        private static void End(string msg, bool ResetProcess)
+        {
+            Process.ResetProcess();
+            End(msg);
         }
 
         private static void ChoiceSeaArea()
@@ -43,12 +64,12 @@ namespace KankoreMahoutsukai.process
                     Operation.Click(x, 50, y, 40, 250);
                     if (!Operation.FindPic( seaAreaHoverBmp))
                     {
-                        Process.End("选择海域失败");
+                        End("选择海域失败", true);
                     }
                 }
                 else
                 {
-                    Process.End("选择海域失败");
+                    End("选择海域失败", true);
                 }
             }
             Utils.Delay(250);
@@ -74,26 +95,26 @@ namespace KankoreMahoutsukai.process
                 }
                 else
                 {
-                    Process.End("没有扩展海域");
+                    End("没有扩展海域", true);
                 }
             }
 
             Wating.AttackInfo();
             string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString();
-            if (!Operation.FindPic(pointBmp))
+            if (!Operation.FindPic("B", pointBmp))
             {
-                Process.End("选择关卡错误");
+                End("选择关卡错误" + pointBmp, true);
             }
             if (!Operation.FindPic(new string[] { "出击决定", "出击决定_hover" }, out x, out y))
             {
-                Process.End("当前无法出击");
+                End("当前无法出击");
             }
             Operation.Click(x, 240, y, 40, 0);
             Outputs.Log("选择关卡" + seaArea + "-" + point);
             Utils.Delay(500);
         }
 
-        private static void ChoiceTeam(int team)
+        private static void ChoiceTeam()
         {
             Wating.TeamChoice();
             Outputs.Log("选择队伍中");
@@ -108,12 +129,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        Process.End("选择队伍失败");
+                        End("选择队伍失败", true);
                     }
                 }
                 else
                 {
-                    Process.End("选择队伍失败");
+                    End("选择队伍失败", true);
                 }
             }
             Utils.Delay(250);
@@ -129,103 +150,102 @@ namespace KankoreMahoutsukai.process
             int breakage = Process.breakage;
             int attackX;
             int attackY;
+            bool isResource = false;
+            bool isFatigue = false;
+            bool isBreakage = false;
             Outputs.Log("队伍检查中");
 
             if (Operation.FindPic("禁止出击"))
             {
-                Process.End("无法出击！");
+                End("无法出击！");
             }
 
             if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out attackX, out attackY))
             {
-                Process.End("出击失败！");
+                End("出击失败！");
             }
 
             // 大破检查
             if (Operation.FindPic(new string[] { "大破" }))
             {
-                Process.End("舰娘大破，无法出击");
+                isBreakage = true;
+                Outputs.Log("舰娘大破，无法出击");
             }
 
-            int x1 = 532, y1 = 197, x2 = 776, y2 = 256;
-            int space = 75;
+            int x1, y1, x2, y2;
+
             // 资源检查
-            if (resourceIndex == 0)
-            {
-                y1 = 197;
-                y2 = 256 + space * 5;
-            }
-            else
-            {
-                y1 = 197 + (resourceIndex - 1) * space;
-                y2 = 256 + (resourceIndex - 1) * space;
-            }
+            GetPosition(resourceIndex, out x1, out y1, out x2, out y2);
             if (resource > 0)
             {
                 if (resource == 1)
                 {
-                    if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_黄色警告" }))
+                    if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_黄色警告", "弹_黄色警告" }, 0.6))
                     {
-                        Process.End("资源未补给！");
+                        isResource = true;
+                        Outputs.Log("资源未补给！");
                     }
                 }
-                if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_红色警告", "弹_红色警告" }))
+                if (Operation.FindPic(x1, y1, x2, y2, new string[] { "油_红色警告", "弹_红色警告" }, 0.6))
                 {
-                    Process.End("资源未补给！");
+                    isResource = true;
+                    Outputs.Log("资源未补给！");
                 }
             }
 
-            // 疲劳检查
-            if (fatigueIndex == 0)
-            {
-                y1 = 197;
-                y2 = 256 + space * 5;
-            }
-            else
-            {
-                y1 = 197 + (fatigueIndex - 1) * space;
-                y2 = 256 + (fatigueIndex - 1) * space;
-            }
-            if (fatigue > 0)
-            {
-                if (fatigue == 1)
-                {
-                    if (Operation.FindPic(x1, y1, x2, y2, "黄脸", 0.7))
-                    {
-                        Process.End("舰娘疲劳！");
-                    }
-                }
-                if (Operation.FindPic(x1, y1, x2, y2, "红脸", 0.7))
-                {
-                    Process.End("舰娘疲劳！");
-                }
-            }
 
             // 破损检查
-            if (breakageIndex == 0)
-            {
-                y1 = 197;
-                y2 = 256 + space * 5;
-            }
-            else
-            {
-                y1 = 197 + (breakageIndex - 1) * space;
-                y2 = 256 + (breakageIndex - 1) * space;
-            }
+            GetPosition(breakageIndex, out x1, out y1, out x2, out y2);
             if (breakage > 0)
             {
                 if (breakage == 1)
                 {
-                    if (Operation.FindPic(x1, y1, x2, y2, "小破", 0.5))
+                    if (Operation.FindPic(x1, y1, x2, y2, "小破", 0.6))
                     {
-                        Process.End("舰娘未修复！");
+                        isBreakage = true;
+                        Outputs.Log("舰娘未修复！");
                     }
                 }
-                if (Operation.FindPic(x1, y1, x2, y2, "中破", 0.5))
+                if (Operation.FindPic(x1, y1, x2, y2, "中破", 0.6))
                 {
-                    Process.End("舰娘未修复！");
+                    isBreakage = true;
+                    Outputs.Log("舰娘未修复！");
                 }
             }
+
+            // 疲劳检查
+            GetPosition(fatigueIndex, out x1, out y1, out x2, out y2);
+            if (fatigue > 0)
+            {
+                if (fatigue == 1)
+                {
+                    if (Operation.FindPic(x1, y1, x2, y2, "黄脸", 0.6))
+                    {
+                        isFatigue = true;
+                        Outputs.Log("舰娘疲劳！");
+                    }
+                }
+                if (Operation.FindPic(x1, y1, x2, y2, "红脸", 0.6))
+                {
+                    isFatigue = true;
+                    Outputs.Log("舰娘疲劳！");
+                }
+            }
+
+            if (isResource || isBreakage || isFatigue)
+            {
+                if (isResource)
+                {
+                    Process.supplyTeam[team - 1] = true;
+                }
+                if (isFatigue)
+                {
+                    End("出击失败，即将返回母港");
+                }
+                End("出击失败，即将返回母港", true);
+            }
+
+
             Operation.Click(attackX, 180, attackY, 30, 250);
         }
 
@@ -238,7 +258,7 @@ namespace KankoreMahoutsukai.process
             int attackNum = 1;
             int x, y;
 
-            Process.supplyTeam1 = true;
+            Process.supplyTeam[team - 1] = true;
 
             bool w1 = true;
             while (w1)
@@ -256,7 +276,7 @@ namespace KankoreMahoutsukai.process
                     Outputs.Log("选择阵型中");
                     if (!Operation.FindPic(formation, out x, out y))
                     {
-                        Outputs.Log("无所选阵型，即将选择单纵阵并撤退");
+                        Outputs.Log("无所选阵型，即将选择单纵阵并撤退停止战斗");
                         formation = "单纵阵";
                         isNightFighting = false;
                         isAttack = false;
@@ -365,6 +385,39 @@ namespace KankoreMahoutsukai.process
                 }
                 Utils.Delay(1000);
             }
+        }
+
+        private static void GetPosition(int index, out int x1, out int y1, out int x2, out int y2)
+        {
+            x1 = 532;
+            y1 = 197;
+            x2 = 776;
+            y2 = 266;
+            int space = 75;
+            if (index == 0)
+            {
+                y1 = 197;
+                y2 = 266 + space * 5;
+            }
+            else
+            {
+                y1 = 197 + (index - 1) * space;
+                y2 = 266 + (index - 1) * space;
+            }
+        }
+    }
+
+    class AttackException : ApplicationException
+    {
+        private string error;
+
+        public AttackException(string msg) : base(msg)
+        {
+            this.error = msg;
+        }
+        public string GetError()
+        {
+            return error;
         }
     }
 }

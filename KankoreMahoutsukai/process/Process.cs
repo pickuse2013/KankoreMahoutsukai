@@ -37,10 +37,7 @@ namespace KankoreMahoutsukai.process
         public static int attackCount = 0;
 
         // 是否需要补给
-        public static bool supplyTeam1 = false;
-        public static bool supplyTeam2 = false;
-        public static bool supplyTeam3 = false;
-        public static bool supplyTeam4 = false;
+        public static bool[] supplyTeam = { false, false, false, false };
 
         // 是否需要远征
         public static bool expeditionTeam2 = false;

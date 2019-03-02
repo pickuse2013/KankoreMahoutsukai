@@ -12,31 +12,19 @@ namespace KankoreMahoutsukai.process
     {
         public static bool Execution()
         {
-            if (Process.supplyTeam1 == false && Process.supplyTeam2 == false && Process.supplyTeam3 == false && Process.supplyTeam4 == false)
+            if (Process.supplyTeam[0] == false && Process.supplyTeam[1] == false && Process.supplyTeam[2] == false && Process.supplyTeam[3] == false)
             {
                 Outputs.Log("不需要补给");
                 return true;
             }
             SwitchScene.HomeToSupply();
-            if (Process.supplyTeam1)
+
+            for (int i = 0; i < Process.supplyTeam.Length; i++)
             {
-                SupplyTeam(1);
-                Process.supplyTeam1 = false;
-            }
-            if (Process.supplyTeam2)
-            {
-                SupplyTeam(2);
-                Process.supplyTeam2 = false;
-            }
-            if (Process.supplyTeam3)
-            {
-                SupplyTeam(3);
-                Process.supplyTeam3 = false;
-            }
-            if (Process.supplyTeam4)
-            {
-                SupplyTeam(4);
-                Process.supplyTeam4 = false;
+                if (Process.supplyTeam[i])
+                {
+                    SupplyTeam(i + 1);
+                }
             }
             Outputs.Log("全部补给完毕");
             SwitchScene.SupplyToHome();
@@ -84,6 +72,7 @@ namespace KankoreMahoutsukai.process
                 }
                 Utils.Delay(1000);
             }
+            Process.supplyTeam[team - 1] = false;
             Outputs.Log("补给team" + team + "完成");
         }
     }

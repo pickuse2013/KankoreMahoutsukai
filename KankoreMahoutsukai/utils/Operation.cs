@@ -153,9 +153,7 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim)
         {
-
-            int x, y;
-            return FindPic(x1, y1, x2, y2, bmp, sim, out x, out y);
+            return FindPic(x1, y1, x2, y2, bmp, sim, out int x, out int y);
         }
 
         public static bool FindPic(string bmp, double sim, out int x, out int y)
@@ -172,8 +170,7 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(string bmp, double sim)
         {
-            int x, y;
-            return FindPic(bmp, sim, out x, out y);
+            return FindPic(bmp, sim, out int x, out int y);
         }
 
         public static bool FindPic(string bmp)
@@ -182,14 +179,14 @@ namespace KankoreMahoutsukai.utils
             return FindPic(bmp, sim);
         }
 
-        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps, out int x, out int y)
+        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps, double sim,  out int x, out int y)
         {
             dmsoft dm = GetDm();
             string bmp = "";
             for (int i = 0; i < bmps.Length; i++)
             {
                 bmp = bmps[i];
-                if (FindPic(x1, y1, x2, y2, bmp, 0.8, out x, out y))
+                if (FindPic(x1, y1, x2, y2, bmp, sim, out x, out y))
                 {
                     return true;
                 }
@@ -197,6 +194,18 @@ namespace KankoreMahoutsukai.utils
             x = -1;
             y = -1;
             return false;
+        }
+
+        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps, out int x, out int y)
+        {
+            double sim = 0.8;
+            return FindPic(x1, y1, x2, y2, bmps, sim, out x, out y);
+        }
+
+        public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps, double sim)
+        {
+
+            return FindPic(x1, y1, x2, y2, bmps, sim, out int x, out int y);
         }
 
         public static bool FindPic(string[] bmps, out int x, out int y)
@@ -207,14 +216,12 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps)
         {
-            int x, y;
-            return FindPic(x1, y1, x2, y2, bmps, out x, out y);
+            return FindPic(x1, y1, x2, y2, bmps, out int x, out int y);
         }
 
         public static bool FindPic(string[] bmps)
         {
-            int x, y;
-            return FindPic(bmps, out x, out y);
+            return FindPic(bmps, out int x, out int y);
         }
 
         public static bool FindPic(string area, string bmp, double sim, out int x, out int y)
@@ -253,8 +260,7 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(string area, string bmp, double sim)
         {
-            int x, y;
-            return FindPic(area, bmp, sim, out x, out y);
+            return FindPic(area, bmp, sim, out int x, out int y);
         }
 
         public static bool FindPic(string area, string bmp)
