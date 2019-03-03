@@ -101,7 +101,7 @@ namespace KankoreMahoutsukai.process
             }
 
             Wating.AttackInfo();
-            string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString();
+            string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString() + "作战名";
             if (!Operation.FindPic("B", pointBmp))
             {
                 End("选择关卡失败" + pointBmp, true);
@@ -130,12 +130,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        End("选择队伍失败", true);
+                        End("选择队伍" + team.ToString() + "失败", true);
                     }
                 }
                 else
                 {
-                    End("选择队伍失败", true);
+                    End("选择队伍" + team.ToString() + "失败", true);
                 }
             }
             Utils.Delay(250);
@@ -415,10 +415,6 @@ namespace KankoreMahoutsukai.process
         public AttackException(string msg) : base(msg)
         {
             error = msg;
-        }
-        public string GetError()
-        {
-            return error;
         }
     }
 }

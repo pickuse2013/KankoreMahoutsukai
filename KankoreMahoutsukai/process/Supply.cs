@@ -12,29 +12,41 @@ namespace KankoreMahoutsukai.process
     {
         public static bool Execution()
         {
+            bool All = true;
             if (!Process.supplyTeam[0] && !Process.supplyTeam[1] && !Process.supplyTeam[2] && !Process.supplyTeam[3])
             {
                 Outputs.Log("不需要补给");
                 return true;
             }
-            try
+
+            SwitchScene.HomeToSupply();
+            for (int i = 0; i < Process.supplyTeam.Length; i++)
             {
-                SwitchScene.HomeToSupply();
-                for (int i = 0; i < Process.supplyTeam.Length; i++)
+                if (Process.supplyTeam[i])
                 {
-                    if (Process.supplyTeam[i])
+                    try
                     {
                         SupplyTeam(i + 1);
                     }
+                    catch (SupplyException)
+                    {
+                        All = false;
+                        continue;
+                    }
                 }
-                Outputs.Log("全部补给完毕");
-                SwitchScene.SupplyToHome();
-                Process.ResetProcess();
             }
-            catch (SupplyException)
+            if (All)
             {
-                Operation.Click(20, 100, 10, 110, 0);
+                Outputs.Log("全部补给完毕");
             }
+            else
+            {
+                Outputs.Log("补给未全部完成，即将重新补给");
+            }
+            
+            SwitchScene.SupplyToHome();
+            Process.ResetProcess();
+
             return true;
         }
 
@@ -58,12 +70,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        End("选择队伍失败");
+                        End("选择队伍" + team.ToString() + "失败");
                     }
                 }
                 else
                 {
-                    End("选择队伍失败");
+                    End("选择队伍" + team.ToString() + "失败");
                 }
             }
 
@@ -79,14 +91,14 @@ namespace KankoreMahoutsukai.process
                 {
                     if (!Operation.FindPic("全部补给", out x, out y))
                     {
-                        End("补给失败");
+                        End("补给队伍" + team.ToString() + "失败");
                     }
                     Operation.Click(x, 25, y, 25, 250);
                 }
                 Utils.Delay(1000);
             }
             Process.supplyTeam[team - 1] = false;
-            Outputs.Log("补给team" + team + "完成");
+            Outputs.Log("补给队伍" + team.ToString() + "完成");
         }
     }
 
@@ -97,10 +109,6 @@ namespace KankoreMahoutsukai.process
         public SupplyException(string msg) : base(msg)
         {
             error = msg;
-        }
-        public string GetError()
-        {
-            return error;
         }
     }
 }
