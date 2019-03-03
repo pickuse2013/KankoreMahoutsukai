@@ -12,7 +12,7 @@ namespace KankoreMahoutsukai.process
     {
         public static bool Execution()
         {
-            int d = 2;
+            int d = 10;
             Wating.Home();
             while (d > 0)
             {

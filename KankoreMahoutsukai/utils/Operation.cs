@@ -225,6 +225,12 @@ namespace KankoreMahoutsukai.utils
             return FindPic(x1, y1, x2, y2, bmps, out int x, out int y);
         }
 
+        public static bool FindPic(string area, string[] bmps)
+        {
+            Partition(area, out int x1, out int y1, out int x2, out int y2);
+            return FindPic(x1, y1, x2, y2, bmps, out int x, out int y);
+        }
+
         public static bool FindPic(string[] bmps)
         {
             return FindPic(bmps, out int x, out int y);

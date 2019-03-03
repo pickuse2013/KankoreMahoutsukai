@@ -228,8 +228,8 @@ namespace KankoreMahoutsukai.process
                     return Expedition.Execution();
                 case 3:
                     return Attack.Execution();
-                    //case 3:
-                    //    return Round.Execution();
+                case 4:
+                    return Round.Execution();
             }
             ResetProcess();
             return true;

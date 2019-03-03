@@ -15,6 +15,7 @@ namespace KankoreMahoutsukai.process
         {
             if (Process.attackCount <= 0)
             {
+                Outputs.Log("不需要战斗");
                 return true;
             }
             try
@@ -149,8 +150,7 @@ namespace KankoreMahoutsukai.process
             int fatigue = Process.fatigue;
             int breakageIndex = Process.breakageIndex;
             int breakage = Process.breakage;
-            int attackX;
-            int attackY;
+
             bool isResource = false;
             bool isFatigue = false;
             bool isBreakage = false;
@@ -161,7 +161,7 @@ namespace KankoreMahoutsukai.process
                 End("无法出击！");
             }
 
-            if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out attackX, out attackY))
+            if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out int attackX, out int attackY))
             {
                 End("出击失败！");
             }
@@ -241,7 +241,7 @@ namespace KankoreMahoutsukai.process
                 }
                 if (isFatigue)
                 {
-                    End("出击失败，即将返回母港");
+                    End("出击失败，即将返回母港恢复疲劳");
                 }
                 End("出击失败，即将返回母港", true);
             }

@@ -53,7 +53,6 @@ namespace KankoreMahoutsukai.process
         private static void End(string msg)
         {
             Outputs.Log(msg);
-            Process.ResetProcess();
             throw new SupplyException(msg);
         }
 
@@ -79,13 +78,12 @@ namespace KankoreMahoutsukai.process
                 }
             }
 
-            bool w = true;
-            while (w)
+            Utils.TimeOut(() =>
             {
                 Outputs.Log("等待补给完成");
-                if(Operation.FindPic("舰队全补给"))
+                if (Operation.FindPic("舰队全补给"))
                 {
-                    w = false;
+                    return false;
                 }
                 else
                 {
@@ -94,9 +92,10 @@ namespace KankoreMahoutsukai.process
                         End("补给队伍" + team.ToString() + "失败");
                     }
                     Operation.Click(x, 25, y, 25, 250);
+                    return true;
                 }
-                Utils.Delay(1000);
-            }
+            }, 1000);
+
             Process.supplyTeam[team - 1] = false;
             Outputs.Log("补给队伍" + team.ToString() + "完成");
         }

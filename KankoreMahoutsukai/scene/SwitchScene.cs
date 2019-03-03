@@ -82,5 +82,12 @@ namespace KankoreMahoutsukai.scene
             Operation.Click(x, 200, y, 200, 0);
             Wating.ExpeditionChoice();
         }
+
+        public static void ExpeditionChoiceToHome()
+        {
+            Wating.ExpeditionChoice();
+            Operation.Click(20, 100, 10, 110, 0);
+            Wating.Home();
+        }
     }
 }
