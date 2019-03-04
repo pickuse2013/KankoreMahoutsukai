@@ -133,7 +133,7 @@ namespace KankoreMahoutsukai.process
             
             while (true)
             {
-                processControl();
+                ProcessControl();
                 step = step + 1;
             }
 
@@ -215,7 +215,7 @@ namespace KankoreMahoutsukai.process
             return true;
         }
 
-        private static bool processControl()
+        private static bool ProcessControl()
         {
             Utils.Delay(500);
             switch (step)
