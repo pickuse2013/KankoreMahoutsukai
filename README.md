@@ -7,7 +7,6 @@
 - **assets**为用到的静态资源，包括素材图片和大漠插件
 - **KankoreMahoutsukai**里为程序源码
 - **KankoreMahoutsukai/bin/Debug/bmp**为**assets/bmp**，调试时一定要保证该文件夹存在
-- **KankoreMahoutsukai/bin/Debug/bmp**为**assets/bmp1153-692**，旧版分辨率素材
 - **KankoreMahoutsukai/bin/Debug/bmp/debug**为调试时使用的文件夹，每次查图都会保存搜寻的图
 - **KankoreMahoutsukaiSetup**里为安装程序项目
 
