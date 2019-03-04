@@ -127,11 +127,11 @@ namespace KankoreMahoutsukai.process
                 End("选择远征" + expedition.ToString() + "失败");
             }
             Operation.Click(x, 600, y, 25, 250);
-            Utils.Delay(250);
-            if (!Operation.FindPic("B", expeditionTaskBmp, 0.5))
-            {
-                End("选择远征" + expedition.ToString() + "失败");
-            }
+            Utils.Delay(500);
+            //if (!Operation.FindPic("B", expeditionTaskBmp, 0.5))
+            //{
+            //    End("选择远征" + expedition.ToString() + "失败");
+            //}
             if (!Operation.FindPic("D", new string[] { "出击决定", "出击决定_hover" }, out x, out y))
             {
                 Process.expeditionTeam[team - 2] = false;

@@ -33,6 +33,7 @@ namespace KankoreMahoutsukai.process
             }
             catch (AttackException)
             {
+                // 进入战斗前错误即将返回母港
                 Operation.Click(20, 100, 10, 110, 0);
             }
 
@@ -47,7 +48,10 @@ namespace KankoreMahoutsukai.process
 
         private static void End(string msg, bool ResetProcess)
         {
-            Process.ResetProcess();
+            if (ResetProcess)
+            {
+                Process.ResetProcess();
+            }
             End(msg);
         }
 
@@ -102,11 +106,11 @@ namespace KankoreMahoutsukai.process
             }
 
             Wating.AttackInfo();
-            string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString() + "作战名";
-            if (!Operation.FindPic("B", pointBmp))
-            {
-                End("选择关卡失败" + pointBmp, true);
-            }
+            //string pointBmp = "图" + seaArea.ToString() + "-" + point.ToString() + "作战名";
+            //if (!Operation.FindPic("B", pointBmp))
+            //{
+            //    End("选择关卡失败" + pointBmp, true);
+            //}
             if (!Operation.FindPic("D", new string[] { "出击决定", "出击决定_hover" }, out x, out y))
             {
                 End("当前无法出击");

@@ -34,31 +34,32 @@ namespace KankoreMahoutsukai.utils
 
         public static bool AutoRegCom()
         {
-            string strCmd = "regsvr32 " + "\\image\\dm.dll /s";
-            string rInfo;
-            try
-            {
-                Process myProcess = new Process();
-                ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("cmd.exe");
-                myProcessStartInfo.UseShellExecute = false;
-                myProcessStartInfo.CreateNoWindow = true;
-                myProcessStartInfo.RedirectStandardOutput = true;
-                myProcess.StartInfo = myProcessStartInfo;
-                myProcessStartInfo.Arguments = "/c " + strCmd;
-                myProcess.Start();
-                StreamReader myStreamReader = myProcess.StandardOutput;
-                rInfo = myStreamReader.ReadToEnd();
-                myProcess.Close();
-                rInfo = strCmd + "\r\n" + rInfo;
-                // return rInfo;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Outputs.Msg("大漠插件调用出问题！" + ex.Message);
-                //return ex.Message;
-                return false;
-            }
+            //string strCmd = "regsvr32 " + "\\image\\dm.dll /s";
+            //string rInfo;
+            //try
+            //{
+            //    Process myProcess = new Process();
+            //    ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("cmd.exe");
+            //    myProcessStartInfo.UseShellExecute = false;
+            //    myProcessStartInfo.CreateNoWindow = true;
+            //    myProcessStartInfo.RedirectStandardOutput = true;
+            //    myProcess.StartInfo = myProcessStartInfo;
+            //    myProcessStartInfo.Arguments = "/c " + strCmd;
+            //    myProcess.Start();
+            //    StreamReader myStreamReader = myProcess.StandardOutput;
+            //    rInfo = myStreamReader.ReadToEnd();
+            //    myProcess.Close();
+            //    rInfo = strCmd + "\r\n" + rInfo;
+            //    // return rInfo;
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Outputs.Msg("大漠插件调用出问题！" + ex.Message);
+            //    //return ex.Message;
+            //    return false;
+            //}
+            return true;
         }
 
         public static bool BindWindow()
