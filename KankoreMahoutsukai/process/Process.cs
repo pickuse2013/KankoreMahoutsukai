@@ -43,6 +43,9 @@ namespace KankoreMahoutsukai.process
         public static bool[] expeditionTeam = { false, false, false};
         public static int[] expedition = { 0, 0, 0 };
 
+        public static bool isFix = true;
+        public static bool watiFix = false;
+
         public static void Start ()
         {
             if (key)
@@ -227,8 +230,10 @@ namespace KankoreMahoutsukai.process
                 case 2:
                     return Expedition.Execution();
                 case 3:
-                    return Attack.Execution();
+                    return Fix.Execution();
                 case 4:
+                    return Attack.Execution();
+                case 5:
                     return Round.Execution();
             }
             ResetProcess();

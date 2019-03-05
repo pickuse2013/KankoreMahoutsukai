@@ -33,16 +33,16 @@ namespace KankoreMahoutsukai.process
             }
             catch (AttackException)
             {
-                // 进入战斗前错误即将返回母港
-                Operation.Click(20, 100, 10, 110, 0);
-            }
 
+            }
             return true;
         }
 
         private static void End(string  msg)
         {
             Outputs.Log(msg);
+            // 不重置流程，回到母港后开始倒计时刷新（用于恢复疲劳和等待修理船只）
+            Operation.Click(20, 100, 10, 110, 0);
             throw new AttackException(msg);
         }
 
@@ -50,7 +50,7 @@ namespace KankoreMahoutsukai.process
         {
             if (ResetProcess)
             {
-                Process.ResetProcess();
+                Process.ResetProcess(); // 重置流程，回到母港后从第一步开始
             }
             End(msg);
         }
@@ -170,17 +170,15 @@ namespace KankoreMahoutsukai.process
                 End("出击失败！");
             }
 
-            // 大破检查
+            // 大破检查 检查三遍！
             if (Operation.FindPic("大破") || Operation.FindPic("大破") || Operation.FindPic("大破"))
             {
                 isBreakage = true;
                 Outputs.Log("舰娘大破，无法出击");
             }
-
-            int x1, y1, x2, y2;
-
+            
             // 资源检查
-            GetPosition(resourceIndex, out x1, out y1, out x2, out y2);
+            GetPosition(resourceIndex, out int x1, out int y1, out int x2, out int y2);
             if (resource > 0)
             {
                 if (resource == 1)
