@@ -80,12 +80,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(seaAreaHoverBmp))
                     {
-                        End("选择海域失败", true);
+                        End("选择海域失败");
                     }
                 }
                 else
                 {
-                    End("选择海域失败", true);
+                    End("选择海域失败");
                 }
             }
 
@@ -111,7 +111,7 @@ namespace KankoreMahoutsukai.process
                 }
                 else
                 {
-                    End("没有扩展海域", true);
+                    End("没有扩展海域");
                 }
             }
 
@@ -145,12 +145,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        End("选择队伍" + team.ToString() + "失败", true);
+                        End("选择队伍" + team.ToString() + "失败");
                     }
                 }
                 else
                 {
-                    End("选择队伍" + team.ToString() + "失败", true);
+                    End("选择队伍" + team.ToString() + "失败");
                 }
             }
             Utils.Delay(250);
@@ -273,9 +273,9 @@ namespace KankoreMahoutsukai.process
                 }
                 if (isFatigue)
                 {
-                    End("出击失败，即将返回母港恢复疲劳");
+                    End("出击失败，即将返回母港恢复疲劳", true);
                 }
-                End("出击失败，即将返回母港", true);
+                End("出击失败，即将返回母港");
             }
 
             if (Operation.FindPic("F", "舰队内入渠中"))
@@ -442,7 +442,7 @@ namespace KankoreMahoutsukai.process
         {
             x1 = 532;
             y1 = 197;
-            x2 = 776;
+            x2 = 786;
             y2 = 266;
             int space = 75;
             if (index == 0)
