@@ -110,9 +110,8 @@ namespace KankoreMahoutsukai.utils
         public static bool FindPic(int x1, int y1, int x2, int y2, string bmp, double sim, out int x, out int y)
         {
             dmsoft dm = GetDm();
-            object w, h;
             int width, height;
-            dm.GetClientSize(hwnd, out w, out h);
+            dm.GetClientSize(hwnd, out object w, out object h);
             width = Convert.ToInt32(w);
             height = Convert.ToInt32(h);
             if (width != windowW || height != windowH)
@@ -339,7 +338,7 @@ namespace KankoreMahoutsukai.utils
             dm.MoveTo(x, y);
             Utils.Delay(100);
             dm.LeftClick();
-            Outputs.Log("x" + x.ToString() + " y" + y.ToString());
+            // Outputs.Log("x" + x.ToString() + " y" + y.ToString());
         }
     }
 }

@@ -60,6 +60,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.smallFastFix = new System.Windows.Forms.ComboBox();
+            this.middleFastFix = new System.Windows.Forms.ComboBox();
             this.bigFastFix = new System.Windows.Forms.ComboBox();
             this.fix = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -69,11 +74,6 @@
             this.start = new System.Windows.Forms.Button();
             this.end = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
-            this.middleFastFix = new System.Windows.Forms.ComboBox();
-            this.smallFastFix = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -605,8 +605,59 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(367, 248);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "修理";
+            this.tabPage3.Text = "修复";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(100, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 20);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "小破";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(100, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 20);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "中破";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(100, 60);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 20);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "大破";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // smallFastFix
+            // 
+            this.smallFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.smallFastFix.FormattingEnabled = true;
+            this.smallFastFix.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.smallFastFix.Location = new System.Drawing.Point(160, 140);
+            this.smallFastFix.Name = "smallFastFix";
+            this.smallFastFix.Size = new System.Drawing.Size(60, 20);
+            this.smallFastFix.TabIndex = 13;
+            // 
+            // middleFastFix
+            // 
+            this.middleFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.middleFastFix.FormattingEnabled = true;
+            this.middleFastFix.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.middleFastFix.Location = new System.Drawing.Point(160, 100);
+            this.middleFastFix.Name = "middleFastFix";
+            this.middleFastFix.Size = new System.Drawing.Size(60, 20);
+            this.middleFastFix.TabIndex = 12;
             // 
             // bigFastFix
             // 
@@ -640,7 +691,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 20);
             this.label15.TabIndex = 4;
-            this.label15.Text = "快速修理";
+            this.label15.Text = "快速修复";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
@@ -649,7 +700,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 20);
             this.label14.TabIndex = 3;
-            this.label14.Text = "舰娘修理";
+            this.label14.Text = "舰娘修复";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
@@ -703,57 +754,6 @@
             this.clear.Text = "clear";
             this.clear.UseVisualStyleBackColor = true;
             this.clear.Click += new System.EventHandler(this.clear_Click);
-            // 
-            // middleFastFix
-            // 
-            this.middleFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.middleFastFix.FormattingEnabled = true;
-            this.middleFastFix.Items.AddRange(new object[] {
-            "否",
-            "是"});
-            this.middleFastFix.Location = new System.Drawing.Point(160, 100);
-            this.middleFastFix.Name = "middleFastFix";
-            this.middleFastFix.Size = new System.Drawing.Size(60, 20);
-            this.middleFastFix.TabIndex = 12;
-            // 
-            // smallFastFix
-            // 
-            this.smallFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.smallFastFix.FormattingEnabled = true;
-            this.smallFastFix.Items.AddRange(new object[] {
-            "否",
-            "是"});
-            this.smallFastFix.Location = new System.Drawing.Point(160, 140);
-            this.smallFastFix.Name = "smallFastFix";
-            this.smallFastFix.Size = new System.Drawing.Size(60, 20);
-            this.smallFastFix.TabIndex = 13;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(100, 60);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 20);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "大破";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label17
-            // 
-            this.label17.Location = new System.Drawing.Point(100, 100);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(30, 20);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "中破";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label18
-            // 
-            this.label18.Location = new System.Drawing.Point(100, 140);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(30, 20);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "小破";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
