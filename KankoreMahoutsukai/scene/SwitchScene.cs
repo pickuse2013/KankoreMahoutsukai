@@ -89,5 +89,20 @@ namespace KankoreMahoutsukai.scene
             Operation.Click(20, 100, 10, 110, 0);
             Wating.Home();
         }
+
+        public static void HomeToDock()
+        {
+            Wating.Home();
+            Switch("入渠", out int x, out int y, "船坞");
+            Operation.Click(x, 90, y, 70, 0);
+            Wating.Dock();
+        }
+
+        public static void DockToHome()
+        {
+            Wating.Dock();
+            Operation.Click(20, 100, 10, 110, 0);
+            Wating.Home();
+        }
     }
 }

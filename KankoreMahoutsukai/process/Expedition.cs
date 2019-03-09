@@ -17,7 +17,7 @@ namespace KankoreMahoutsukai.process
             if (!Process.expeditionTeam[0] && !Process.expeditionTeam[1] && !Process.expeditionTeam[2])
             {
                 Outputs.Log("不需要远征");
-                return true;
+                return false;
             }
 
             SwitchScene.HomeToAttackChoice();
@@ -52,7 +52,6 @@ namespace KankoreMahoutsukai.process
             }
 
             SwitchScene.ExpeditionChoiceToHome();
-            Process.ResetProcess();
             return true;
         }
 
@@ -64,12 +63,11 @@ namespace KankoreMahoutsukai.process
 
         private static void End(string msg, bool back)
         {
-            Outputs.Log(msg);
             if (back)
             {
                 Operation.Click(180, 280, 110, 120, 250);
             }
-            throw new ExpeditionException(msg);
+            End(msg);
         }
 
         private static void ChoiceSeaArea()

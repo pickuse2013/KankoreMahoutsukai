@@ -11,12 +11,24 @@ namespace KankoreMahoutsukai.process
     class Attack
     {
         private static int team = 1;
+        private static bool skipAttact = false;
         public static bool Execution()
         {
             if (Process.attackCount <= 0)
             {
                 Outputs.Log("不需要战斗");
-                return true;
+                return false;
+            }
+            if (Process.watiFix)
+            {
+                Outputs.Log("等待空船坞修理中");
+                return false;
+            }
+            if (skipAttact)
+            {
+                Outputs.Log("跳过战斗开始等待");
+                skipAttact = false;
+                return false;
             }
             try
             {
@@ -27,14 +39,11 @@ namespace KankoreMahoutsukai.process
                 ChoiceTeam();
                 CheckTeam();
                 Battle();
-                Process.attackCount--;
-                Form1.form1.attackCount.Text = Process.attackCount.ToString();
-                Process.ResetProcess();
+                Process.SetAttackCount(Process.attackCount - 1);
             }
             catch (AttackException)
             {
-                // 进入战斗前错误即将返回母港
-                Operation.Click(20, 100, 10, 110, 0);
+
             }
 
             return true;
@@ -43,14 +52,15 @@ namespace KankoreMahoutsukai.process
         private static void End(string  msg)
         {
             Outputs.Log(msg);
+            Operation.Click(20, 100, 10, 110, 0);
             throw new AttackException(msg);
         }
 
-        private static void End(string msg, bool ResetProcess)
+        private static void End(string msg, bool skip)
         {
-            if (ResetProcess)
+            if (skip)
             {
-                Process.ResetProcess();
+                skipAttact = true;
             }
             End(msg);
         }
@@ -68,14 +78,14 @@ namespace KankoreMahoutsukai.process
                 {
                     Operation.Click(x, 50, y, 40, 250);
                     Utils.Delay(250);
-                    if (!Operation.FindPic( seaAreaHoverBmp))
+                    if (!Operation.FindPic(seaAreaHoverBmp))
                     {
-                        End("选择海域失败", true);
+                        End("选择海域失败");
                     }
                 }
                 else
                 {
-                    End("选择海域失败", true);
+                    End("选择海域失败");
                 }
             }
 
@@ -101,7 +111,7 @@ namespace KankoreMahoutsukai.process
                 }
                 else
                 {
-                    End("没有扩展海域", true);
+                    End("没有扩展海域");
                 }
             }
 
@@ -135,12 +145,12 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(250);
                     if (!Operation.FindPic(teamHoverBmp))
                     {
-                        End("选择队伍" + team.ToString() + "失败", true);
+                        End("选择队伍" + team.ToString() + "失败");
                     }
                 }
                 else
                 {
-                    End("选择队伍" + team.ToString() + "失败", true);
+                    End("选择队伍" + team.ToString() + "失败");
                 }
             }
             Utils.Delay(250);
@@ -160,27 +170,25 @@ namespace KankoreMahoutsukai.process
             bool isBreakage = false;
             Outputs.Log("队伍检查中");
 
-            if (Operation.FindPic("禁止出击"))
-            {
-                End("无法出击！");
-            }
-
-            if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out int attackX, out int attackY))
-            {
-                End("出击失败！");
-            }
-
-            // 大破检查
+            // 大破检查 检查三遍！
             if (Operation.FindPic("大破") || Operation.FindPic("大破") || Operation.FindPic("大破"))
             {
+                if (Process.fix > 0)
+                {
+                    Outputs.Log("舰娘大破，即将返回母港修复");
+                    Process.isFix = true;
+                }
+                else if (Process.fix == 0)
+                {
+                    Outputs.Log("舰娘大破，无法出击");
+                    Process.SetAttackCount(0);
+                }
                 isBreakage = true;
-                Outputs.Log("舰娘大破，无法出击");
+                
             }
-
-            int x1, y1, x2, y2;
-
+            
             // 资源检查
-            GetPosition(resourceIndex, out x1, out y1, out x2, out y2);
+            GetPosition(resourceIndex, out int x1, out int y1, out int x2, out int y2);
             if (resource > 0)
             {
                 if (resource == 1)
@@ -207,14 +215,34 @@ namespace KankoreMahoutsukai.process
                 {
                     if (Operation.FindPic(x1, y1, x2, y2, "小破", 0.6))
                     {
+                        if (Process.fix == 3)
+                        {
+                            Outputs.Log("舰娘未修复，即将返回母港修复");
+                            Process.isFix = true;
+                        }
+                        else
+                        {
+                            Outputs.Log("舰娘未修复！");
+                            Process.SetAttackCount(0);
+                        }
                         isBreakage = true;
                         Outputs.Log("舰娘未修复！");
                     }
                 }
                 if (Operation.FindPic(x1, y1, x2, y2, "中破", 0.6))
                 {
+                    if (Process.fix > 1)
+                    {
+                        Outputs.Log("舰娘未修复，即将返回母港修复");
+                        Process.isFix = true;
+                    }
+                    else
+                    {
+                        Outputs.Log("舰娘未修复！");
+                        Process.SetAttackCount(0);
+                    }
                     isBreakage = true;
-                    Outputs.Log("舰娘未修复！");
+                    
                 }
             }
 
@@ -245,11 +273,25 @@ namespace KankoreMahoutsukai.process
                 }
                 if (isFatigue)
                 {
-                    End("出击失败，即将返回母港恢复疲劳");
+                    End("出击失败，即将返回母港恢复疲劳", true);
                 }
-                End("出击失败，即将返回母港", true);
+                End("出击失败，即将返回母港");
             }
 
+            if (Operation.FindPic("F", "舰队内入渠中"))
+            {
+                End("出击失败，队内有舰娘正在修复", true);
+            }
+
+            if (Operation.FindPic("禁止出击"))
+            {
+                End("无法出击！");
+            }
+
+            if (!Operation.FindPic(new string[] { "出击开始", "出击开始_hover" }, out int attackX, out int attackY))
+            {
+                End("出击失败！");
+            }
 
             Operation.Click(attackX, 180, attackY, 30, 250);
         }
@@ -315,6 +357,10 @@ namespace KankoreMahoutsukai.process
                                     {
                                         Outputs.Log("舰娘大破，即将撤退！");
                                         isAttack = false;
+                                        if (Process.fix > 0)
+                                        {
+                                            Process.isFix = true;
+                                        }
                                     }
                                     else
                                     {
@@ -396,7 +442,7 @@ namespace KankoreMahoutsukai.process
         {
             x1 = 532;
             y1 = 197;
-            x2 = 776;
+            x2 = 786;
             y2 = 266;
             int space = 75;
             if (index == 0)
@@ -410,6 +456,7 @@ namespace KankoreMahoutsukai.process
                 y2 = 266 + (index - 1) * space;
             }
         }
+
     }
 
     class AttackException : ApplicationException

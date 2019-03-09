@@ -17,7 +17,7 @@ namespace KankoreMahoutsukai.process
             if (!Operation.FindPic("远征归来",out x, out y))
             {
                 Outputs.Log("没有远征");
-                return true;
+                return false;
             }
             else
             {
@@ -39,21 +39,30 @@ namespace KankoreMahoutsukai.process
                                 if (Operation.FindPic("远征归来2队", out x, out y))
                                 {
                                     Process.supplyTeam[1] = true;
-                                    Process.expeditionTeam[0] = true;
+                                    if (Process.expedition[0] != 0)
+                                    {
+                                        Process.expeditionTeam[0] = true;
+                                    }
                                     Outputs.Log("远征2队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }
                                 if (Operation.FindPic("远征归来3队", out x, out y))
                                 {
                                     Process.supplyTeam[2] = true;
-                                    Process.expeditionTeam[1] = true;
+                                    if (Process.expedition[1] != 0)
+                                    {
+                                        Process.expeditionTeam[1] = true;
+                                    }
                                     Outputs.Log("远征3队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }
                                 if (Operation.FindPic("远征归来4队", out x, out y))
                                 {
                                     Process.supplyTeam[3] = true;
-                                    Process.expeditionTeam[2] = true;
+                                    if (Process.expedition[2] != 0)
+                                    {
+                                        Process.expeditionTeam[2] = true;
+                                    }
                                     Outputs.Log("远征4队归来");
                                     Operation.Click(x, 40, y, 40, 250);
                                 }
@@ -65,7 +74,6 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(1000);
                 }
             }
-            Process.ResetProcess();
             return true;
         }
     }

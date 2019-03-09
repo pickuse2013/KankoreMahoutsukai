@@ -90,6 +90,7 @@
     <Compile Include="process\Attack.cs" />
     <Compile Include="process\Expedition.cs" />
     <Compile Include="process\ExpeditionReturn.cs" />
+    <Compile Include="process\Fix.cs" />
     <Compile Include="process\Process.cs" />
     <Compile Include="process\Round.cs" />
     <Compile Include="process\Supply.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="scene\Determine.cs" />
     <Compile Include="scene\SwitchScene.cs" />
     <Compile Include="scene\Wating.cs" />
+    <Compile Include="utils\IniFiles.cs" />
     <Compile Include="utils\Outputs.cs" />
     <Compile Include="utils\Operation.cs" />
     <Compile Include="utils\Utils.cs" />

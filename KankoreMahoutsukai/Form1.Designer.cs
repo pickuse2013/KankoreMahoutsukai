@@ -53,21 +53,31 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.expedition3 = new System.Windows.Forms.ComboBox();
+            this.expedition2 = new System.Windows.Forms.ComboBox();
+            this.expedition1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.smallFastFix = new System.Windows.Forms.ComboBox();
+            this.middleFastFix = new System.Windows.Forms.ComboBox();
+            this.bigFastFix = new System.Windows.Forms.ComboBox();
+            this.fix = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.log = new System.Windows.Forms.TextBox();
             this.start = new System.Windows.Forms.Button();
             this.end = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.expedition1 = new System.Windows.Forms.ComboBox();
-            this.expedition2 = new System.Windows.Forms.ComboBox();
-            this.expedition3 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -391,100 +401,12 @@
             this.tabPage2.Text = "远征";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // expedition3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(367, 248);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "修理";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(430, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 20);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "战斗日志";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // log
-            // 
-            this.log.Location = new System.Drawing.Point(430, 70);
-            this.log.Multiline = true;
-            this.log.Name = "log";
-            this.log.ReadOnly = true;
-            this.log.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.log.Size = new System.Drawing.Size(200, 280);
-            this.log.TabIndex = 4;
-            this.log.WordWrap = false;
-            this.log.TextChanged += new System.EventHandler(this.log_TextChanged);
-            // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(20, 366);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(84, 23);
-            this.start.TabIndex = 5;
-            this.start.Text = "开始";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
-            // 
-            // end
-            // 
-            this.end.Enabled = false;
-            this.end.Location = new System.Drawing.Point(122, 366);
-            this.end.Name = "end";
-            this.end.Size = new System.Drawing.Size(84, 23);
-            this.end.TabIndex = 6;
-            this.end.Text = "停止";
-            this.end.UseVisualStyleBackColor = true;
-            this.end.Click += new System.EventHandler(this.end_Click);
-            // 
-            // clear
-            // 
-            this.clear.Location = new System.Drawing.Point(546, 30);
-            this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(84, 23);
-            this.clear.TabIndex = 7;
-            this.clear.Text = "clear";
-            this.clear.UseVisualStyleBackColor = true;
-            this.clear.Click += new System.EventHandler(this.clear_Click);
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(20, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "远征1队";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(20, 60);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 20);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "远征2队";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label13
-            // 
-            this.label13.Location = new System.Drawing.Point(20, 100);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 20);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "远征3队";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // expedition1
-            // 
-            this.expedition1.DisplayMember = "0";
-            this.expedition1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.expedition1.FormattingEnabled = true;
-            this.expedition1.Items.AddRange(new object[] {
+            this.expedition3.DisplayMember = "0";
+            this.expedition3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.expedition3.FormattingEnabled = true;
+            this.expedition3.Items.AddRange(new object[] {
             "不远征",
             "1 练习航海",
             "2 长距离练习航海",
@@ -526,12 +448,12 @@
             "38 东京急行(二)",
             "39 远洋潜水舰作战",
             "40 水上机前线输送"});
-            this.expedition1.Location = new System.Drawing.Point(100, 20);
-            this.expedition1.Name = "expedition1";
-            this.expedition1.Size = new System.Drawing.Size(200, 20);
-            this.expedition1.TabIndex = 11;
-            this.expedition1.ValueMember = "0";
-            this.expedition1.SelectedIndexChanged += new System.EventHandler(this.expedition1_SelectedIndexChanged);
+            this.expedition3.Location = new System.Drawing.Point(100, 100);
+            this.expedition3.Name = "expedition3";
+            this.expedition3.Size = new System.Drawing.Size(200, 20);
+            this.expedition3.TabIndex = 13;
+            this.expedition3.ValueMember = "0";
+            this.expedition3.SelectedIndexChanged += new System.EventHandler(this.expedition3_SelectedIndexChanged);
             // 
             // expedition2
             // 
@@ -587,12 +509,12 @@
             this.expedition2.ValueMember = "0";
             this.expedition2.SelectedIndexChanged += new System.EventHandler(this.expedition2_SelectedIndexChanged);
             // 
-            // expedition3
+            // expedition1
             // 
-            this.expedition3.DisplayMember = "0";
-            this.expedition3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.expedition3.FormattingEnabled = true;
-            this.expedition3.Items.AddRange(new object[] {
+            this.expedition1.DisplayMember = "0";
+            this.expedition1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.expedition1.FormattingEnabled = true;
+            this.expedition1.Items.AddRange(new object[] {
             "不远征",
             "1 练习航海",
             "2 长距离练习航海",
@@ -634,12 +556,204 @@
             "38 东京急行(二)",
             "39 远洋潜水舰作战",
             "40 水上机前线输送"});
-            this.expedition3.Location = new System.Drawing.Point(100, 100);
-            this.expedition3.Name = "expedition3";
-            this.expedition3.Size = new System.Drawing.Size(200, 20);
-            this.expedition3.TabIndex = 13;
-            this.expedition3.ValueMember = "0";
-            this.expedition3.SelectedIndexChanged += new System.EventHandler(this.expedition3_SelectedIndexChanged);
+            this.expedition1.Location = new System.Drawing.Point(100, 20);
+            this.expedition1.Name = "expedition1";
+            this.expedition1.Size = new System.Drawing.Size(200, 20);
+            this.expedition1.TabIndex = 11;
+            this.expedition1.ValueMember = "0";
+            this.expedition1.SelectedIndexChanged += new System.EventHandler(this.expedition1_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(20, 100);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 20);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "远征4队";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(20, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 20);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "远征3队";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(20, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "远征2队";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.smallFastFix);
+            this.tabPage3.Controls.Add(this.middleFastFix);
+            this.tabPage3.Controls.Add(this.bigFastFix);
+            this.tabPage3.Controls.Add(this.fix);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(367, 248);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "修复";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(100, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(30, 20);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "小破";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(100, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 20);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "中破";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(100, 60);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 20);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "大破";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // smallFastFix
+            // 
+            this.smallFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.smallFastFix.FormattingEnabled = true;
+            this.smallFastFix.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.smallFastFix.Location = new System.Drawing.Point(160, 140);
+            this.smallFastFix.Name = "smallFastFix";
+            this.smallFastFix.Size = new System.Drawing.Size(60, 20);
+            this.smallFastFix.TabIndex = 13;
+            // 
+            // middleFastFix
+            // 
+            this.middleFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.middleFastFix.FormattingEnabled = true;
+            this.middleFastFix.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.middleFastFix.Location = new System.Drawing.Point(160, 100);
+            this.middleFastFix.Name = "middleFastFix";
+            this.middleFastFix.Size = new System.Drawing.Size(60, 20);
+            this.middleFastFix.TabIndex = 12;
+            // 
+            // bigFastFix
+            // 
+            this.bigFastFix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bigFastFix.FormattingEnabled = true;
+            this.bigFastFix.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.bigFastFix.Location = new System.Drawing.Point(160, 61);
+            this.bigFastFix.Name = "bigFastFix";
+            this.bigFastFix.Size = new System.Drawing.Size(60, 20);
+            this.bigFastFix.TabIndex = 11;
+            // 
+            // fix
+            // 
+            this.fix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fix.FormattingEnabled = true;
+            this.fix.Items.AddRange(new object[] {
+            "不修理",
+            "仅修理大破",
+            "修理中破和大破",
+            "全部修理"});
+            this.fix.Location = new System.Drawing.Point(100, 20);
+            this.fix.Name = "fix";
+            this.fix.Size = new System.Drawing.Size(120, 20);
+            this.fix.TabIndex = 10;
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(20, 60);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 20);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "快速修复";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(20, 20);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 20);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "舰娘修复";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(430, 30);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "战斗日志";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // log
+            // 
+            this.log.Location = new System.Drawing.Point(430, 70);
+            this.log.Multiline = true;
+            this.log.Name = "log";
+            this.log.ReadOnly = true;
+            this.log.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.log.Size = new System.Drawing.Size(200, 280);
+            this.log.TabIndex = 4;
+            this.log.WordWrap = false;
+            this.log.TextChanged += new System.EventHandler(this.log_TextChanged);
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(20, 366);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(84, 23);
+            this.start.TabIndex = 5;
+            this.start.Text = "开始";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
+            // end
+            // 
+            this.end.Enabled = false;
+            this.end.Location = new System.Drawing.Point(122, 366);
+            this.end.Name = "end";
+            this.end.Size = new System.Drawing.Size(84, 23);
+            this.end.TabIndex = 6;
+            this.end.Text = "停止";
+            this.end.UseVisualStyleBackColor = true;
+            this.end.Click += new System.EventHandler(this.end_Click);
+            // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(546, 30);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(84, 23);
+            this.clear.TabIndex = 7;
+            this.clear.Text = "clear";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
             // Form1
             // 
@@ -668,6 +782,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -711,6 +826,15 @@
         public System.Windows.Forms.ComboBox expedition1;
         public System.Windows.Forms.ComboBox expedition3;
         public System.Windows.Forms.ComboBox expedition2;
+        public System.Windows.Forms.ComboBox fix;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.ComboBox bigFastFix;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.ComboBox smallFastFix;
+        public System.Windows.Forms.ComboBox middleFastFix;
     }
 }
 
