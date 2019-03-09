@@ -61,7 +61,7 @@ namespace KankoreMahoutsukai.scene
             Wati(Determine.InExpeditionChoice, "远征选择");
         }
 
-        public static void Factory()
+        public static void Dock()
         {
             Wati(Determine.InDock, "船坞");
         }
@@ -69,6 +69,16 @@ namespace KankoreMahoutsukai.scene
         public static void ShipChoice()
         {
             Wati(Determine.InShipChoice, "舰船选择");
+        }
+
+        public static void ShipStatus()
+        {
+            Wati(Determine.InShipStatus, "舰船状态");
+        }
+
+        public static void ShipFixConfirm()
+        {
+            Wati(Determine.InShipFixConfirm, "确认入渠信息");
         }
 
     }

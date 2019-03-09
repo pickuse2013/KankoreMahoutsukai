@@ -17,7 +17,7 @@ namespace KankoreMahoutsukai.process
             if (!Operation.FindPic("远征归来",out x, out y))
             {
                 Outputs.Log("没有远征");
-                return true;
+                return false;
             }
             else
             {
@@ -74,7 +74,6 @@ namespace KankoreMahoutsukai.process
                     Utils.Delay(1000);
                 }
             }
-            Process.ResetProcess();
             return true;
         }
     }

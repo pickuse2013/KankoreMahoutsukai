@@ -35,6 +35,10 @@ namespace KankoreMahoutsukai
             this.expedition1.SelectedIndex = 0;
             this.expedition2.SelectedIndex = 0;
             this.expedition3.SelectedIndex = 0;
+            this.fix.SelectedIndex = 0;
+            this.bigFastFix.SelectedIndex = 0;
+            this.middleFastFix.SelectedIndex = 0;
+            this.smallFastFix.SelectedIndex = 0;
         }
 
         private void start_Click(object sender, EventArgs e)

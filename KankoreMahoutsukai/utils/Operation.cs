@@ -217,8 +217,14 @@ namespace KankoreMahoutsukai.utils
 
         public static bool FindPic(string[] bmps, out int x, out int y)
         {
+            double sim = 0.8;
+            return FindPic(bmps, sim, out x, out y);
+        }
+
+        public static bool FindPic(string[] bmps, double sim, out int x, out int y)
+        {
             int x1 = 0, y1 = 0, x2 = x1 + gameW - 1, y2 = y1 + gameH - 1;
-            return FindPic(x1, y1, x2, y2, bmps, out x, out y);
+            return FindPic(x1, y1, x2, y2, bmps, sim, out x, out y);
         }
 
         public static bool FindPic(int x1, int y1, int x2, int y2, string[] bmps)

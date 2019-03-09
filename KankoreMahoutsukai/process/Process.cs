@@ -43,7 +43,11 @@ namespace KankoreMahoutsukai.process
         public static bool[] expeditionTeam = { false, false, false};
         public static int[] expedition = { 0, 0, 0 };
 
-        public static bool isFix = true;
+        public static int fix = 0;
+        public static bool bigFastFix = false;
+        public static bool middleFastFix = false;
+        public static bool smallFastFix = false;
+        public static bool isFix = false;
         public static bool watiFix = false;
 
         public static void Start ()
@@ -69,6 +73,10 @@ namespace KankoreMahoutsukai.process
             Form1.form1.expedition1.Enabled = false;
             Form1.form1.expedition2.Enabled = false;
             Form1.form1.expedition3.Enabled = false;
+            Form1.form1.fix.Enabled = false;
+            Form1.form1.bigFastFix.Enabled = false;
+            Form1.form1.middleFastFix.Enabled = false;
+            Form1.form1.smallFastFix.Enabled = false;
             thread = new Thread(new ThreadStart(StartProcess));
             thread.Start();
         }
@@ -99,6 +107,10 @@ namespace KankoreMahoutsukai.process
             Form1.form1.expedition1.Enabled = true;
             Form1.form1.expedition2.Enabled = true;
             Form1.form1.expedition3.Enabled = true;
+            Form1.form1.fix.Enabled = true;
+            Form1.form1.bigFastFix.Enabled = true;
+            Form1.form1.middleFastFix.Enabled = true;
+            Form1.form1.smallFastFix.Enabled = true;
             thread.Abort();
         }
 
@@ -136,8 +148,14 @@ namespace KankoreMahoutsukai.process
             
             while (true)
             {
-                ProcessControl();
-                step = step + 1;
+                if (ProcessControl())
+                {
+                    step = 0;
+                }
+                else
+                {
+                    step = step + 1;
+                }
             }
 
         }
@@ -213,6 +231,16 @@ namespace KankoreMahoutsukai.process
             }
             config += "4队：" + Form1.form1.expedition3.Text + System.Environment.NewLine;
 
+            fix = Form1.form1.fix.SelectedIndex;
+            config += "舰娘修理：" + Form1.form1.fix.Text + System.Environment.NewLine;
+            bigFastFix = Form1.form1.bigFastFix.SelectedIndex == 1 ? true : false;
+            middleFastFix = Form1.form1.middleFastFix.SelectedIndex == 1 ? true : false;
+            smallFastFix = Form1.form1.smallFastFix.SelectedIndex == 1 ? true : false;
+            config += "快速修理：" + System.Environment.NewLine;
+            config += "-大破：" + Form1.form1.bigFastFix.Text + System.Environment.NewLine;
+            config += "-中破：" + Form1.form1.middleFastFix.Text + System.Environment.NewLine;
+            config += "-小破：" + Form1.form1.smallFastFix.Text + System.Environment.NewLine;
+
             config += "==========";
             Outputs.Log(config);
             return true;
@@ -236,12 +264,18 @@ namespace KankoreMahoutsukai.process
                 case 5:
                     return Round.Execution();
             }
-            ResetProcess();
             return true;
         }
 
-        // 流程归0
-        public static void ResetProcess() => step = -1;
+        public static void SetAttackCount(int count)
+        {
+            if (count < 0)
+            {
+                return;
+            }
+            attackCount = count;
+            Form1.form1.attackCount.Text = count.ToString();
+        }
 
 
     }

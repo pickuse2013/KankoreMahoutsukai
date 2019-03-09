@@ -54,5 +54,15 @@ namespace KankoreMahoutsukai.scene
         {
             return Operation.FindPic("E", "舰船选择");
         }
+
+        public static bool InShipStatus()
+        {
+            return Operation.FindPic("B", "舰船状态");
+        }
+
+        public static bool InShipFixConfirm()
+        {
+            return Operation.FindPic("E", "舰船入渠");
+        }
     }
 }

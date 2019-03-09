@@ -16,7 +16,7 @@ namespace KankoreMahoutsukai.process
             if (!Process.supplyTeam[0] && !Process.supplyTeam[1] && !Process.supplyTeam[2] && !Process.supplyTeam[3])
             {
                 Outputs.Log("不需要补给");
-                return true;
+                return false;
             }
 
             SwitchScene.HomeToSupply();
@@ -45,7 +45,6 @@ namespace KankoreMahoutsukai.process
             }
             
             SwitchScene.SupplyToHome();
-            Process.ResetProcess();
 
             return true;
         }
